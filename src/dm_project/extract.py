@@ -9,7 +9,7 @@ import hashlib
 import json
 from collections import defaultdict
 from pathlib import Path
-from typing import Iterable, Iterator
+from typing import Callable, Container, Iterable, Iterator
 
 from rdflib import BNode, Literal, URIRef
 from rdflib.plugins.parsers.ntriples import W3CNTriplesParser
@@ -32,8 +32,15 @@ class _TripleSink:
         self.triples.append((subject, predicate, obj))
 
 
-def iter_triples(path: Path) -> Iterator[tuple[object, object, object]]:
-    """Stream triples without assuming that subjects are adjacent in the dump."""
+def iter_triples(
+    path: Path, line_filter: Callable[[str], bool] | None = None
+) -> Iterator[tuple[object, object, object]]:
+    """Stream triples without assuming that subjects are adjacent in the dump.
+
+    line_filter is a pure fast-path: it may reject a raw line only when the
+    caller would ignore its parsed triple anyway. Lines it keeps are parsed
+    exactly as before, so filtered and unfiltered iteration see the same data.
+    """
     opener = gzip.open if path.suffix == ".gz" else open
     with opener(path, "rt", encoding="utf-8") as source:
         sink = _TripleSink()
@@ -41,12 +48,34 @@ def iter_triples(path: Path) -> Iterator[tuple[object, object, object]]:
         for line_number, line in enumerate(source, 1):
             if not line.strip() or line.lstrip().startswith("#"):
                 continue
+            if line_filter is not None and not line_filter(line):
+                continue
             sink.triples.clear()
             try:
                 parser.parsestring(line)
             except Exception as exc:
                 raise ValueError(f"invalid N-Triples at line {line_number}: {exc}") from exc
             yield from sink.triples
+
+
+_PUBLISHED_IN_STREAM_TOKEN = f"<{PUBLISHED_IN_STREAM}>"
+
+
+def _mentions_published_in_stream(line: str) -> bool:
+    # Escaped lines are always parsed because UCHAR escapes could hide the token.
+    return _PUBLISHED_IN_STREAM_TOKEN in line or "\\" in line
+
+
+def _subject_in(wanted: Container[str]) -> Callable[[str], bool]:
+    def keep(line: str) -> bool:
+        if not line.startswith("<"):
+            return True
+        end = line.find(">")
+        if end == -1 or "\\" in line[:end]:
+            return True
+        return line[1:end] in wanted
+
+    return keep
 
 
 def sha256_file(path: Path) -> str:
@@ -83,7 +112,7 @@ def extract(input_path: Path, config_path: Path, output_dir: Path, verify_source
     year_from, year_to = int(config["year_from"]), int(config["year_to"])
 
     publication_venues: dict[str, set[str]] = defaultdict(set)
-    for subject, predicate, obj in iter_triples(input_path):
+    for subject, predicate, obj in iter_triples(input_path, _mentions_published_in_stream):
         if predicate == PUBLISHED_IN_STREAM and str(obj) in venues:
             publication_venues[str(subject)].add(str(obj))
 
@@ -96,7 +125,7 @@ def extract(input_path: Path, config_path: Path, output_dir: Path, verify_source
     }
     fields: dict[str, dict[str, object]] = defaultdict(dict)
     authors: dict[str, set[str]] = defaultdict(set)
-    for subject, predicate, obj in iter_triples(input_path):
+    for subject, predicate, obj in iter_triples(input_path, _subject_in(candidates)):
         publication_id = str(subject)
         if publication_id not in candidates:
             continue
@@ -139,7 +168,7 @@ def extract(input_path: Path, config_path: Path, output_dir: Path, verify_source
 
     names: dict[str, str] = {}
     ambiguous: set[str] = set()
-    for subject, predicate, obj in iter_triples(input_path):
+    for subject, predicate, obj in iter_triples(input_path, _subject_in(creator_ids)):
         creator_id = str(subject)
         if creator_id not in creator_ids:
             continue
