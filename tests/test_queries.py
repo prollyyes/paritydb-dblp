@@ -22,7 +22,8 @@ def test_all_sparql_templates_parse_after_rendering() -> None:
         "Q2": {**BASE, "min_publications": 1, "limit": 10},
         "Q3": {**BASE, "source_id": "https://dblp.org/pid/a", "target_id": "https://dblp.org/pid/d", "max_depth": 4},
         "Q4": {**BASE, "source_id": "https://dblp.org/pid/a", "min_mutuals": 1, "limit": 10},
-        "Q5": {**BASE, "ancestor_area": "computer-science", "min_distinct_areas": 2},
+        # Real Q5 instances carry no venue_ids: rendering must not require it.
+        "Q5": {"year_from": 2005, "year_to": 2024, "ancestor_area": "computer-science", "min_distinct_areas": 2},
     }
     for profile, values in parameters.items():
         template = (ROOT / "queries/sparql" / f"{profile.lower()}.rq").read_text(encoding="utf-8")
@@ -40,7 +41,8 @@ def test_all_sparql_queries_execute_with_expected_fixture_results(tmp_path: Path
         "Q2": {**BASE, "min_publications": 1, "limit": 10},
         "Q3": {**BASE, "source_id": "https://dblp.org/pid/a", "target_id": "https://dblp.org/pid/d", "max_depth": 4},
         "Q4": {**BASE, "source_id": "https://dblp.org/pid/a", "min_mutuals": 1, "limit": 10},
-        "Q5": {**BASE, "ancestor_area": "computer-science", "min_distinct_areas": 2},
+        # Real Q5 instances carry no venue_ids: rendering must not require it.
+        "Q5": {"year_from": 2005, "year_to": 2024, "ancestor_area": "computer-science", "min_distinct_areas": 2},
     }
     results = {}
     for profile, values in parameters.items():

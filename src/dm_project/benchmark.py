@@ -51,13 +51,13 @@ def _venue_ids(parameters: dict[str, Any], dataset: dict[str, Any]) -> list[str]
 
 
 def render_sparql(template: str, parameters: dict[str, Any], dataset: dict[str, Any]) -> str:
-    values = " ".join(URIRef(value).n3() for value in _venue_ids(parameters, dataset))
     replacements = {key: str(value) for key, value in parameters.items() if key != "venue_ids"}
-    replacements["venue_values"] = values
+    if "venue_ids" in parameters:
+        replacements["venue_values"] = " ".join(URIRef(value).n3() for value in _venue_ids(parameters, dataset))
     if "ancestor_area" in replacements and not re.fullmatch(r"[a-z0-9-]+", replacements["ancestor_area"]):
         raise ValueError("ancestor_area must contain only lowercase letters, digits, and hyphens")
     if "path_branches" in template:
-        replacements["path_branches"] = build_path_branches(parameters, values)
+        replacements["path_branches"] = build_path_branches(parameters, replacements["venue_values"])
     for key, value in replacements.items():
         template = template.replace("{{" + key + "}}", value)
     missing = sorted(set(re.findall(r"{{([a-z_]+)}}", template)))
