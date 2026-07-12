@@ -1,0 +1,33 @@
+<https://dblp.org/rec/conf/sigmod/P1> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/sigmod> .
+<https://dblp.org/rec/conf/sigmod/P1> <https://dblp.org/rdf/schema#yearOfPublication> "2010"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rec/conf/sigmod/P1> <https://dblp.org/rdf/schema#title> "First paper" .
+<https://dblp.org/rec/conf/sigmod/P1> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/a> .
+<https://dblp.org/rec/conf/sigmod/P1> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/b> .
+<https://dblp.org/rec/conf/kdd/P2> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/kdd> .
+<https://dblp.org/rec/conf/kdd/P2> <https://dblp.org/rdf/schema#yearOfPublication> "2011"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rec/conf/kdd/P2> <https://dblp.org/rdf/schema#title> "Second paper" .
+<https://dblp.org/rec/conf/kdd/P2> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/b> .
+<https://dblp.org/rec/conf/kdd/P2> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/c> .
+<https://dblp.org/rec/conf/kdd/P3> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/kdd> .
+<https://dblp.org/rec/conf/kdd/P3> <https://dblp.org/rdf/schema#yearOfPublication> "2012"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rec/conf/kdd/P3> <https://dblp.org/rdf/schema#title> "Third paper" .
+<https://dblp.org/rec/conf/kdd/P3> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/c> .
+<https://dblp.org/rec/conf/kdd/P3> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/d> .
+<https://dblp.org/rec/conf/multi/P4> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/sigmod> .
+<https://dblp.org/rec/conf/multi/P4> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/kdd> .
+<https://dblp.org/rec/conf/multi/P4> <https://dblp.org/rdf/schema#yearOfPublication> "2013"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rec/conf/multi/P4> <https://dblp.org/rdf/schema#title> "Cross-listed paper" .
+<https://dblp.org/rec/conf/sigmod/P5> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/sigmod> .
+<https://dblp.org/rec/conf/sigmod/P5> <https://dblp.org/rdf/schema#yearOfPublication> "2004"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rec/conf/sigmod/P5> <https://dblp.org/rdf/schema#title> "Outside window" .
+<https://dblp.org/rec/conf/sigmod/P6> <https://dblp.org/rdf/schema#publishedInStream> <https://dblp.org/streams/conf/sigmod> .
+<https://dblp.org/rec/conf/sigmod/P6> <https://dblp.org/rdf/schema#yearOfPublication> "2014"^^<http://www.w3.org/2001/XMLSchema#gYear> .
+<https://dblp.org/rec/conf/sigmod/P6> <https://dblp.org/rdf/schema#title> "Ambiguous authorship" .
+<https://dblp.org/rec/conf/sigmod/P6> <https://dblp.org/rdf/schema#authoredBy> <https://dblp.org/pid/e> .
+<https://dblp.org/pid/a> <https://dblp.org/rdf/schema#primaryCreatorName> "Alex Kim" .
+<https://dblp.org/pid/b> <https://dblp.org/rdf/schema#primaryCreatorName> "Blair Rao" .
+<https://dblp.org/pid/c> <https://dblp.org/rdf/schema#primaryCreatorName> "Casey Li" .
+<https://dblp.org/pid/d> <https://dblp.org/rdf/schema#primaryCreatorName> "Alex Kim" .
+<https://dblp.org/pid/e> <https://dblp.org/rdf/schema#primaryCreatorName> "Unknown" .
+<https://dblp.org/pid/e> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://dblp.org/rdf/schema#AmbiguousCreator> .
+

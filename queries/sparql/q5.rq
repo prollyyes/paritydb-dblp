@@ -1,0 +1,21 @@
+PREFIX dblp: <https://dblp.org/rdf/schema#>
+PREFIX dm: <https://example.org/dm/schema#>
+PREFIX area: <https://example.org/dm/area/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?person_id ?name
+       (COUNT(DISTINCT ?direct_area) AS ?area_count)
+       (COUNT(DISTINCT ?publication) AS ?publication_count)
+WHERE {
+  ?direct_area rdfs:subClassOf* area:{{ancestor_area}} .
+  ?venue dm:assignedArea ?direct_area .
+  ?publication dblp:publishedInStream ?venue ;
+               dblp:yearOfPublication ?year ;
+               dblp:authoredBy ?person_id .
+  ?person_id dblp:primaryCreatorName ?name .
+  FILTER(xsd:integer(STR(?year)) >= {{year_from}} && xsd:integer(STR(?year)) <= {{year_to}})
+}
+GROUP BY ?person_id ?name
+HAVING(COUNT(DISTINCT ?direct_area) >= {{min_distinct_areas}})
+ORDER BY DESC(?area_count) DESC(?publication_count) ?person_id

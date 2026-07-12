@@ -1,0 +1,54 @@
+{
+  "instances": [
+    {
+      "id": "q1_decades_all",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {"year_from": 2005, "year_to": 2024, "bucket": "decade", "venue_ids": "all"}
+    },
+    {
+      "id": "q2_top_authors",
+      "profile": "Q2",
+      "enabled": true,
+      "parameters": {"year_from": 2005, "year_to": 2024, "min_publications": 2, "limit": 25, "venue_ids": "all"}
+    },
+    {
+      "id": "q3_replace_after_pilot",
+      "profile": "Q3",
+      "enabled": false,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 4,
+        "venue_ids": "all",
+        "source_id": "REPLACE_WITH_DBLP_PERSON_IRI",
+        "target_id": "REPLACE_WITH_DBLP_PERSON_IRI"
+      }
+    },
+    {
+      "id": "q4_replace_after_pilot",
+      "profile": "Q4",
+      "enabled": false,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "venue_ids": "all",
+        "source_id": "REPLACE_WITH_DBLP_PERSON_IRI",
+        "min_mutuals": 1,
+        "limit": 25
+      }
+    },
+    {
+      "id": "q5_ai_cross_area",
+      "profile": "Q5",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "ancestor_area": "artificial-intelligence",
+        "min_distinct_areas": 2
+      }
+    }
+  ]
+}
+

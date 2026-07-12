@@ -1,0 +1,30 @@
+PREFIX dblp: <https://dblp.org/rdf/schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?person_id ?name ?publication_count (COUNT(DISTINCT ?coauthor) AS ?coauthor_count)
+WHERE {
+  {
+    SELECT ?person_id (COUNT(DISTINCT ?publication) AS ?publication_count)
+    WHERE {
+      VALUES ?venue { {{venue_values}} }
+      ?publication dblp:publishedInStream ?venue ;
+                   dblp:yearOfPublication ?year ;
+                   dblp:authoredBy ?person_id .
+      FILTER(xsd:integer(STR(?year)) >= {{year_from}} && xsd:integer(STR(?year)) <= {{year_to}})
+    }
+    GROUP BY ?person_id
+    HAVING(COUNT(DISTINCT ?publication) >= {{min_publications}})
+  }
+  ?person_id dblp:primaryCreatorName ?name .
+  OPTIONAL {
+    VALUES ?coVenue { {{venue_values}} }
+    ?coPublication dblp:publishedInStream ?coVenue ;
+                   dblp:yearOfPublication ?coYear ;
+                   dblp:authoredBy ?person_id, ?coauthor .
+    FILTER(?coauthor != ?person_id)
+    FILTER(xsd:integer(STR(?coYear)) >= {{year_from}} && xsd:integer(STR(?coYear)) <= {{year_to}})
+  }
+}
+GROUP BY ?person_id ?name ?publication_count
+ORDER BY DESC(?publication_count) DESC(?coauthor_count) ?person_id
+LIMIT {{limit}}

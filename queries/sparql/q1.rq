@@ -1,0 +1,15 @@
+PREFIX dblp: <https://dblp.org/rdf/schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?venue_id ?bucket_start (COUNT(DISTINCT ?publication) AS ?publication_count)
+WHERE {
+  VALUES ?venue_id { {{venue_values}} }
+  ?publication dblp:publishedInStream ?venue_id ;
+               dblp:yearOfPublication ?year .
+  FILTER(xsd:integer(STR(?year)) >= {{year_from}} && xsd:integer(STR(?year)) <= {{year_to}})
+  BIND(IF("{{bucket}}" = "decade",
+          xsd:integer(FLOOR(xsd:integer(STR(?year)) / 10) * 10),
+          xsd:integer(STR(?year))) AS ?bucket_start)
+}
+GROUP BY ?venue_id ?bucket_start
+ORDER BY ?bucket_start ?venue_id

@@ -1,0 +1,30 @@
+PREFIX dblp: <https://dblp.org/rdf/schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?candidate_id ?name (COUNT(DISTINCT ?mutual) AS ?mutual_coauthor_count)
+WHERE {
+  VALUES ?venue1 { {{venue_values}} }
+  VALUES ?venue2 { {{venue_values}} }
+  BIND(IRI("{{source_id}}") AS ?source)
+  ?firstPaper dblp:publishedInStream ?venue1 ;
+              dblp:yearOfPublication ?year1 ;
+              dblp:authoredBy ?source, ?mutual .
+  ?secondPaper dblp:publishedInStream ?venue2 ;
+               dblp:yearOfPublication ?year2 ;
+               dblp:authoredBy ?mutual, ?candidate_id .
+  ?candidate_id dblp:primaryCreatorName ?name .
+  FILTER(?mutual != ?source && ?candidate_id != ?mutual && ?candidate_id != ?source)
+  FILTER(xsd:integer(STR(?year1)) >= {{year_from}} && xsd:integer(STR(?year1)) <= {{year_to}})
+  FILTER(xsd:integer(STR(?year2)) >= {{year_from}} && xsd:integer(STR(?year2)) <= {{year_to}})
+  FILTER NOT EXISTS {
+    VALUES ?directVenue { {{venue_values}} }
+    ?directPaper dblp:publishedInStream ?directVenue ;
+                 dblp:yearOfPublication ?directYear ;
+                 dblp:authoredBy ?source, ?candidate_id .
+    FILTER(xsd:integer(STR(?directYear)) >= {{year_from}} && xsd:integer(STR(?directYear)) <= {{year_to}})
+  }
+}
+GROUP BY ?candidate_id ?name
+HAVING(COUNT(DISTINCT ?mutual) >= {{min_mutuals}})
+ORDER BY DESC(?mutual_coauthor_count) ?candidate_id
+LIMIT {{limit}}

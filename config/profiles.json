@@ -1,0 +1,43 @@
+{
+  "Q1": {
+    "label": "Publication trends",
+    "aggregation": true,
+    "join_complexity": "shallow",
+    "variable_path": false,
+    "needs_inference": false,
+    "expected_shape": "grouped rows"
+  },
+  "Q2": {
+    "label": "Productive and collaborative authors",
+    "aggregation": true,
+    "join_complexity": "self_join",
+    "variable_path": false,
+    "needs_inference": false,
+    "expected_shape": "ranked rows"
+  },
+  "Q3": {
+    "label": "Collaboration distance",
+    "aggregation": false,
+    "join_complexity": "recursive",
+    "variable_path": true,
+    "needs_inference": false,
+    "expected_shape": "zero or one row"
+  },
+  "Q4": {
+    "label": "Indirect collaboration discovery",
+    "aggregation": true,
+    "join_complexity": "bounded_traversal",
+    "variable_path": true,
+    "needs_inference": false,
+    "expected_shape": "ranked candidates"
+  },
+  "Q5": {
+    "label": "Inference-aware area analysis",
+    "aggregation": true,
+    "join_complexity": "hierarchy",
+    "variable_path": false,
+    "needs_inference": true,
+    "expected_shape": "grouped authors"
+  }
+}
+

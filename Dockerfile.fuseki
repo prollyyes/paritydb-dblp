@@ -1,0 +1,17 @@
+FROM eclipse-temurin:21-jre
+
+ARG JENA_VERSION=6.1.0
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates curl \
+    && curl -fsSLO "https://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-${JENA_VERSION}.tar.gz" \
+    && curl -fsSLO "https://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-${JENA_VERSION}.tar.gz.sha512" \
+    && sha512sum -c "apache-jena-fuseki-${JENA_VERSION}.tar.gz.sha512" \
+    && tar -xzf "apache-jena-fuseki-${JENA_VERSION}.tar.gz" \
+    && mv "apache-jena-fuseki-${JENA_VERSION}" /fuseki \
+    && rm "apache-jena-fuseki-${JENA_VERSION}.tar.gz" "apache-jena-fuseki-${JENA_VERSION}.tar.gz.sha512" \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /fuseki
+EXPOSE 3030
+ENTRYPOINT ["./fuseki-server"]
+CMD ["--update", "--mem", "/dblp"]

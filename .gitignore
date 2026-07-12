@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.DS_Store
+data/canonical/
+data/rdf/
+config/instances.json
+results/summary.csv
+results/campaign.json
+AGENTS.md
+Data_Management_Project_Blueprint_1.md
+Data_Management_Project_Blueprint_1.pdf

@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "ParityDB-DBLP: An Explainable SQL-SPARQL Comparison over DBLP"
+type: software
+authors:
+  - family-names: "Tam"
+    given-names: "Luca"
+  - family-names: "Simonetti Spallotta"
+    given-names: "Edoardo"
+version: 0.1.0
+date-released: 2026-07-12
+license: MIT
+keywords:
+  - DBLP
+  - PostgreSQL
+  - SPARQL
+  - Apache Jena Fuseki
+  - RDF
+  - data management

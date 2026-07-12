@@ -1,0 +1,10 @@
+PREFIX dblp: <https://dblp.org/rdf/schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT (IRI("{{source_id}}") AS ?source_id)
+       (IRI("{{target_id}}") AS ?target_id)
+       (MIN(?candidate_distance) AS ?distance)
+WHERE {
+  {{path_branches}}
+}
+HAVING(COUNT(?candidate_distance) > 0)
