@@ -1,0 +1,126 @@
+{
+  "backend": "postgresql",
+  "query_family": "Q1",
+  "instance_id": "q1_ai_years",
+  "parameters": {
+    "year_from": 2015,
+    "year_to": 2024,
+    "bucket": "year",
+    "venue_ids": [
+      "https://dblp.org/streams/conf/kdd",
+      "https://dblp.org/streams/conf/nips"
+    ]
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 3248.51,
+        "Total Cost": 3463.18,
+        "Plan Rows": 100,
+        "Plan Width": 47,
+        "Actual Startup Time": 99.159,
+        "Actual Total Time": 102.124,
+        "Actual Rows": 20,
+        "Actual Loops": 1,
+        "Group Key": [
+          "year",
+          "venue_id"
+        ],
+        "Shared Hit Blocks": 976,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Sort",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 3248.51,
+            "Total Cost": 3301.93,
+            "Plan Rows": 21367,
+            "Plan Width": 82,
+            "Actual Startup Time": 99.113,
+            "Actual Total Time": 99.944,
+            "Actual Rows": 23549,
+            "Actual Loops": 1,
+            "Sort Key": [
+              "year",
+              "venue_id",
+              "publication_id"
+            ],
+            "Sort Method": "quicksort",
+            "Sort Space Used": 3120,
+            "Sort Space Type": "Memory",
+            "Shared Hit Blocks": 976,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "publication",
+                "Alias": "p",
+                "Startup Cost": 0.0,
+                "Total Cost": 1711.89,
+                "Plan Rows": 21367,
+                "Plan Width": 82,
+                "Actual Startup Time": 0.455,
+                "Actual Total Time": 4.16,
+                "Actual Rows": 23549,
+                "Actual Loops": 1,
+                "Filter": "((year >= '2015'::smallint) AND (year <= '2024'::smallint) AND (venue_id = ANY ('{https://dblp.org/streams/conf/kdd,https://dblp.org/streams/conf/nips}'::text[])))",
+                "Rows Removed by Filter": 18502,
+                "Shared Hit Blocks": 976,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 2,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.078,
+      "Triggers": [],
+      "Execution Time": 102.35
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "instances": [
+    {
+      "id": "q1_all_decades",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "bucket": "decade",
+        "venue_ids": "all"
+      }
+    },
+    {
+      "id": "q1_database_years",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2015,
+        "year_to": 2024,
+        "bucket": "year",
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      }
+    },
+    {
+      "id": "q1_ai_years",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2015,
+        "year_to": 2024,
+        "bucket": "year",
+        "venue_ids": [
+          "https://dblp.org/streams/conf/kdd",
+          "https://dblp.org/streams/conf/nips"
+        ]
+      }
+    },
+    {
+      "id": "q2_all_min_2",
+      "profile": "Q2",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "min_publications": 2,
+        "limit": 25,
+        "venue_ids": "all"
+      }
+    },
+    {
+      "id": "q2_database_min_3",
+      "profile": "Q2",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "min_publications": 3,
+        "limit": 25,
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      }
+    },
+    {
+      "id": "q3_direct_moderate",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 1,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/00/10545",
+        "target_id": "https://dblp.org/pid/83/8757"
+      }
+    },
+    {
+      "id": "q3_distance_3",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 3,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/00/10000",
+        "target_id": "https://dblp.org/pid/02/2624"
+      }
+    },
+    {
+      "id": "q3_out_of_bound_depth_2",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 2,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/00/10000",
+        "target_id": "https://dblp.org/pid/02/2624"
+      }
+    }
+  ]
+}

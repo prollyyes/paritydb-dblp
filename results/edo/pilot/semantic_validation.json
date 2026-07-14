@@ -1,0 +1,182 @@
+{
+  "backend": "postgresql",
+  "scope": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "passed": true,
+  "checks": [
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_all_decades",
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "bucket": "decade",
+        "venue_ids": "all"
+      },
+      "row_count": 15,
+      "result_sha256": "4752445349c36a261b8c4d3f4ed70e33a47853ad8004a00f84df2521b6d964c2",
+      "validation": {
+        "passed": true,
+        "observed_publications": 5000,
+        "reference_publications": 5000,
+        "observed_groups": 15,
+        "reference_groups": 15,
+        "unique_venue_bucket_keys": true
+      }
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_database_years",
+      "parameters": {
+        "year_from": 2015,
+        "year_to": 2024,
+        "bucket": "year",
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      },
+      "row_count": 30,
+      "result_sha256": "5af524eaab408b3c261ab6e80e2f51e7388471004dbdc984deb5227514770fe8",
+      "validation": {
+        "passed": true,
+        "observed_publications": 1873,
+        "reference_publications": 1873,
+        "observed_groups": 30,
+        "reference_groups": 30,
+        "unique_venue_bucket_keys": true
+      }
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_ai_years",
+      "parameters": {
+        "year_from": 2015,
+        "year_to": 2024,
+        "bucket": "year",
+        "venue_ids": [
+          "https://dblp.org/streams/conf/kdd",
+          "https://dblp.org/streams/conf/nips"
+        ]
+      },
+      "row_count": 20,
+      "result_sha256": "2d93d881f234695c5c3765dea1192bd2c62e5d3ad47102e3d4fd19ff296237d9",
+      "validation": {
+        "passed": true,
+        "observed_publications": 1589,
+        "reference_publications": 1589,
+        "observed_groups": 20,
+        "reference_groups": 20,
+        "unique_venue_bucket_keys": true
+      }
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_all_min_2",
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "min_publications": 2,
+        "limit": 25,
+        "venue_ids": "all"
+      },
+      "row_count": 25,
+      "result_sha256": "4e4db2bbf31c134b845f563add10fe2cff680d5270a31ffacf297e4efa27bc12",
+      "validation": {
+        "passed": true,
+        "rows_checked": 25,
+        "count_mismatches": [],
+        "ordering_valid": true,
+        "thresholds_valid": true
+      }
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_database_min_3",
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "min_publications": 3,
+        "limit": 25,
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      },
+      "row_count": 25,
+      "result_sha256": "0bcfc53fea56acbaca64c7eddd9cfe219345d66fd831b40cc3252e7420dab782",
+      "validation": {
+        "passed": true,
+        "rows_checked": 25,
+        "count_mismatches": [],
+        "ordering_valid": true,
+        "thresholds_valid": true
+      }
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_direct_moderate",
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 1,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/00/10545",
+        "target_id": "https://dblp.org/pid/83/8757"
+      },
+      "row_count": 1,
+      "result_sha256": "e7686ee291a2a3880ef9358dc5b2194dc4a2a495e203c6af3b0d621353472e95",
+      "validation": {
+        "passed": true,
+        "observed_distance": 1,
+        "independent_bfs_distance": 1,
+        "at_most_one_row": true
+      }
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_distance_3",
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 3,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/00/10000",
+        "target_id": "https://dblp.org/pid/02/2624"
+      },
+      "row_count": 1,
+      "result_sha256": "c31ee4dad4063c026adcd0030bd3c6db3017367f6b13400e574712599d94f6be",
+      "validation": {
+        "passed": true,
+        "observed_distance": 3,
+        "independent_bfs_distance": 3,
+        "at_most_one_row": true
+      }
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_out_of_bound_depth_2",
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 2,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/00/10000",
+        "target_id": "https://dblp.org/pid/02/2624"
+      },
+      "row_count": 0,
+      "result_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation": {
+        "passed": true,
+        "observed_distance": null,
+        "independent_bfs_distance": null,
+        "at_most_one_row": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "source_md5_matches": true,
+  "source_sha256_matches": true,
+  "config_sha256_matches": true,
+  "csv_counts": {
+    "area": 6,
+    "authorship": 20492,
+    "person": 12826,
+    "publication": 5000,
+    "venue": 5,
+    "venue_area": 5
+  },
+  "venue_publication_counts": {
+    "https://dblp.org/streams/conf/icde": 1000,
+    "https://dblp.org/streams/conf/kdd": 1000,
+    "https://dblp.org/streams/conf/nips": 1000,
+    "https://dblp.org/streams/conf/sigmod": 1000,
+    "https://dblp.org/streams/journals/pvldb": 1000
+  },
+  "year_min": 2005,
+  "year_max": 2024,
+  "publication_ids_unique": true,
+  "person_ids_unique": true,
+  "authorship_pairs_unique": true,
+  "authorship_persons_present": true
+}

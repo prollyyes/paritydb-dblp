@@ -1,0 +1,21 @@
+{
+  "backend": "postgresql",
+  "scope": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "scale": "full",
+  "dataset_sha256": "3e8b08752eecf0fff56f5b1bcf1fcad0bbb717d9d40e0a169761569e53050e4c",
+  "instances_sha256": "584186179bd947cad6a1b35fd741cd13a2b2cf9b31a7a1bfeb02e35be27f4913",
+  "query_sha256": {
+    "Q1": "09bc9f1d6e312f4f600e43355e3f8c3e67daaf94a52d2f6242d0ded0c3ebdf54",
+    "Q2": "b4d0eff5eca0e300ae5dba7b55bb68f363b02b9c7e11296938a836f4d4256e08",
+    "Q3": "ab71069c938e82100dc012c3e787c968f59af17fbf623f5fbd61ba43dc46ca04"
+  },
+  "timeout_seconds": 300,
+  "warmups": 2,
+  "repetitions": 5,
+  "success": true,
+  "failure": null
+}

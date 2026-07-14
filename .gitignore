@@ -4,6 +4,7 @@ __pycache__/
 *.egg-info/
 .DS_Store
 data/canonical/
+data/canonical-full/
 data/rdf/
 config/instances.json
 results/summary.csv

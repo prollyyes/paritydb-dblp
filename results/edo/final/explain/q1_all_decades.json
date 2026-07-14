@@ -1,0 +1,123 @@
+{
+  "backend": "postgresql",
+  "query_family": "Q1",
+  "instance_id": "q1_all_decades",
+  "parameters": {
+    "year_from": 2005,
+    "year_to": 2024,
+    "bucket": "decade",
+    "venue_ids": "all"
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 4257.84,
+        "Total Cost": 4560.19,
+        "Plan Rows": 100,
+        "Plan Width": 47,
+        "Actual Startup Time": 238.661,
+        "Actual Total Time": 253.882,
+        "Actual Rows": 15,
+        "Actual Loops": 1,
+        "Group Key": [
+          "(((year / 10) * 10))",
+          "venue_id"
+        ],
+        "Shared Hit Blocks": 982,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 484,
+        "Temp Written Blocks": 485,
+        "Plans": [
+          {
+            "Node Type": "Sort",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 4257.84,
+            "Total Cost": 4333.06,
+            "Plan Rows": 30085,
+            "Plan Width": 82,
+            "Actual Startup Time": 238.383,
+            "Actual Total Time": 249.667,
+            "Actual Rows": 42051,
+            "Actual Loops": 1,
+            "Sort Key": [
+              "(((year / 10) * 10))",
+              "venue_id",
+              "publication_id"
+            ],
+            "Sort Method": "external merge",
+            "Sort Space Used": 3872,
+            "Sort Space Type": "Disk",
+            "Shared Hit Blocks": 982,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 484,
+            "Temp Written Blocks": 485,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "publication",
+                "Alias": "p",
+                "Startup Cost": 0.0,
+                "Total Cost": 2020.01,
+                "Plan Rows": 30085,
+                "Plan Width": 82,
+                "Actual Startup Time": 0.028,
+                "Actual Total Time": 17.822,
+                "Actual Rows": 42051,
+                "Actual Loops": 1,
+                "Filter": "((year >= '2005'::smallint) AND (year <= '2024'::smallint) AND (venue_id = ANY ('{https://dblp.org/streams/conf/sigmod,https://dblp.org/streams/conf/icde,https://dblp.org/streams/journals/pvldb,https://dblp.org/streams/conf/kdd,https://dblp.org/streams/conf/nips}'::text[])))",
+                "Rows Removed by Filter": 0,
+                "Shared Hit Blocks": 976,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 109,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 1.356,
+      "Triggers": [],
+      "Execution Time": 254.51
+    }
+  ]
+}
