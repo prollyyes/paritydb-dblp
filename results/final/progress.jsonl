@@ -1,0 +1,28 @@
+{"event": "campaign_started", "execution_order": "interleaved", "instances": 13, "timestamp_utc": "2026-07-14T15:26:47.630749+00:00"}
+{"event": "instance_started", "instance_id": "q1_all_decades", "ordinal": 1, "profile": "Q1", "timestamp_utc": "2026-07-14T15:26:47.704504+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q1_all_decades", "ordinal": 1, "timestamp_utc": "2026-07-14T15:26:51.934844+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q1_db_yearly", "ordinal": 2, "profile": "Q1", "timestamp_utc": "2026-07-14T15:26:51.935460+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q1_db_yearly", "ordinal": 2, "timestamp_utc": "2026-07-14T15:26:53.074911+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q1_ai_yearly", "ordinal": 3, "profile": "Q1", "timestamp_utc": "2026-07-14T15:26:53.075241+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q1_ai_yearly", "ordinal": 3, "timestamp_utc": "2026-07-14T15:26:55.577844+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q2_db_min3", "ordinal": 4, "profile": "Q2", "timestamp_utc": "2026-07-14T15:26:55.578204+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q2_db_min3", "ordinal": 4, "timestamp_utc": "2026-07-14T15:46:05.169152+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q2_db_min5", "ordinal": 5, "profile": "Q2", "timestamp_utc": "2026-07-14T15:46:05.174416+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q2_db_min5", "ordinal": 5, "timestamp_utc": "2026-07-14T15:56:26.767050+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q3_direct_depth2", "ordinal": 6, "profile": "Q3", "timestamp_utc": "2026-07-14T15:56:26.770200+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q3_direct_depth2", "ordinal": 6, "timestamp_utc": "2026-07-14T16:00:54.821534+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q3_pvldb_distance3_depth4", "ordinal": 7, "profile": "Q3", "timestamp_utc": "2026-07-14T16:00:54.828512+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q3_pvldb_distance3_depth4", "ordinal": 7, "timestamp_utc": "2026-07-14T16:18:47.729913+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q3_pvldb_distance3_depth2", "ordinal": 8, "profile": "Q3", "timestamp_utc": "2026-07-14T16:18:47.733862+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q3_pvldb_distance3_depth2", "ordinal": 8, "timestamp_utc": "2026-07-14T16:18:51.068080+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q3_pvldb_out_of_reach", "ordinal": 9, "profile": "Q3", "timestamp_utc": "2026-07-14T16:18:51.068594+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q3_pvldb_out_of_reach", "ordinal": 9, "timestamp_utc": "2026-07-14T16:34:11.387855+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q4_moderate_min1", "ordinal": 10, "profile": "Q4", "timestamp_utc": "2026-07-14T16:34:11.393810+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q4_moderate_min1", "ordinal": 10, "timestamp_utc": "2026-07-14T16:36:55.396074+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q4_moderate_min2", "ordinal": 11, "profile": "Q4", "timestamp_utc": "2026-07-14T16:36:55.398895+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q4_moderate_min2", "ordinal": 11, "timestamp_utc": "2026-07-14T16:41:15.535804+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q5_dm_min1", "ordinal": 12, "profile": "Q5", "timestamp_utc": "2026-07-14T16:41:15.540491+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q5_dm_min1", "ordinal": 12, "timestamp_utc": "2026-07-14T16:41:32.931909+00:00", "total": 13}
+{"event": "instance_started", "instance_id": "q5_ai_min2", "ordinal": 13, "profile": "Q5", "timestamp_utc": "2026-07-14T16:41:32.932561+00:00", "total": 13}
+{"event": "instance_completed", "instance_id": "q5_ai_min2", "ordinal": 13, "timestamp_utc": "2026-07-14T16:41:51.436118+00:00", "total": 13}
+{"event": "campaign_completed", "failure": null, "rows": 208, "success": true, "timestamp_utc": "2026-07-14T16:41:51.454544+00:00"}

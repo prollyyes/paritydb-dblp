@@ -1,0 +1,53 @@
+{
+  "source": {
+    "release_date": "2026-06-01",
+    "doi": "10.4230/dblp.rdf.ntriples.2026-06-01",
+    "landing_page": "https://doi.org/10.4230/dblp.rdf.ntriples.2026-06-01",
+    "download_url": "https://drops.dagstuhl.de/storage/artifacts/dblp/rdf/2026/dblp-2026-06-01.nt.gz",
+    "md5": "0f361aac50ce087524d5ac4bcf25cad2",
+    "schema_revision": "2024-06-14"
+  },
+  "scale": "full",
+  "year_from": 2005,
+  "year_to": 2024,
+  "venues": [
+    {
+      "id": "https://dblp.org/streams/conf/sigmod",
+      "label": "SIGMOD Conference",
+      "kind": "conference",
+      "area": "database-systems"
+    },
+    {
+      "id": "https://dblp.org/streams/conf/icde",
+      "label": "ICDE",
+      "kind": "conference",
+      "area": "database-systems"
+    },
+    {
+      "id": "https://dblp.org/streams/journals/pvldb",
+      "label": "Proceedings of the VLDB Endowment",
+      "kind": "journal",
+      "area": "database-systems"
+    },
+    {
+      "id": "https://dblp.org/streams/conf/kdd",
+      "label": "KDD",
+      "kind": "conference",
+      "area": "data-mining"
+    },
+    {
+      "id": "https://dblp.org/streams/conf/nips",
+      "label": "NeurIPS",
+      "kind": "conference",
+      "area": "machine-learning"
+    }
+  ],
+  "areas": [
+    {"id": "computer-science", "label": "Computer Science", "parent": null},
+    {"id": "data-management", "label": "Data Management", "parent": "computer-science"},
+    {"id": "database-systems", "label": "Database Systems", "parent": "data-management"},
+    {"id": "artificial-intelligence", "label": "Artificial Intelligence", "parent": "computer-science"},
+    {"id": "data-mining", "label": "Data Mining", "parent": "artificial-intelligence"},
+    {"id": "machine-learning", "label": "Machine Learning", "parent": "artificial-intelligence"}
+  ]
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "query_family": "Q1",
+    "instance_id": "q1_all_decades",
+    "file": "q1_all_decades.json",
+    "sha256": "a536c778d10dcee29bc2c84b3f1bf619c12133bd6d7cc776defcaf74f00a3d18"
+  },
+  {
+    "query_family": "Q1",
+    "instance_id": "q1_db_yearly",
+    "file": "q1_db_yearly.json",
+    "sha256": "be6884aa05eca929bc2f0f0b45c2d9f733603178e16c88a19cb00f3c08793e73"
+  },
+  {
+    "query_family": "Q1",
+    "instance_id": "q1_ai_yearly",
+    "file": "q1_ai_yearly.json",
+    "sha256": "ac99217e624494b606a65bafff63f455568dddeec8548299f7d8ea62c9f4b4ac"
+  },
+  {
+    "query_family": "Q2",
+    "instance_id": "q2_db_min3",
+    "file": "q2_db_min3.json",
+    "sha256": "195ba64e3315dbda274e539c6f241ab22c46be16d91ff8c805818f10ef6a5963"
+  },
+  {
+    "query_family": "Q2",
+    "instance_id": "q2_db_min5",
+    "file": "q2_db_min5.json",
+    "sha256": "ffb8bd7f19024cfa5fa0f84bd9a548cff559e835dafe4932add23e7c26116c68"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_direct_depth2",
+    "file": "q3_direct_depth2.json",
+    "sha256": "4e7eb38bf2e72d93a9ae703664780b0ad642ddaa448756ecf0069d0a14190da4"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_pvldb_distance3_depth4",
+    "file": "q3_pvldb_distance3_depth4.json",
+    "sha256": "fdf72ae5f5b3c2acb1065de3add048a0c2ad430678b7952d2afce16022a27bff"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_pvldb_distance3_depth2",
+    "file": "q3_pvldb_distance3_depth2.json",
+    "sha256": "e9d37575533bcdbc5436b2b680f0f44dcae7d8285f5a3b194ee4ab91f7a48266"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_pvldb_out_of_reach",
+    "file": "q3_pvldb_out_of_reach.json",
+    "sha256": "f1da5836517935b24528eacc5aeb6fa57b08de5d6625c3b4df57fa39f098ef12"
+  }
+]

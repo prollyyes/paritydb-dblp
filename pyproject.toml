@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8,<9"]
+dev = ["matplotlib>=3.9,<4", "pytest>=8,<9"]
 
 [project.scripts]
 dm-extract = "dm_project.extract:main"

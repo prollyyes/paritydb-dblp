@@ -1,0 +1,11 @@
+{
+  "scale": "full",
+  "dataset_sha256": "3e8b08752eecf0fff56f5b1bcf1fcad0bbb717d9d40e0a169761569e53050e4c",
+  "instances_sha256": "6b9e2b659ef172935ad3c3c609aa5ef6d9f7ac5e4f7b7b36c1a109d40dc82cad",
+  "timeout_seconds": 300,
+  "warmups": 2,
+  "repetitions": 5,
+  "execution_order": "interleaved",
+  "success": true,
+  "failure": null
+}
