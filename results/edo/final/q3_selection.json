@@ -1,0 +1,70 @@
+{
+  "backend": "postgresql",
+  "eligible_graph": {
+    "year_from": 2005,
+    "year_to": 2024,
+    "venue_ids": [
+      "https://dblp.org/streams/conf/sigmod",
+      "https://dblp.org/streams/conf/icde",
+      "https://dblp.org/streams/journals/pvldb",
+      "https://dblp.org/streams/conf/kdd",
+      "https://dblp.org/streams/conf/nips"
+    ],
+    "people_with_edges": 65884,
+    "undirected_edges": 324597
+  },
+  "direct": {
+    "source": {
+      "person_id": "https://dblp.org/pid/00/100",
+      "name": "Kenji Doya",
+      "eligible_coauthor_degree": 3
+    },
+    "target": {
+      "person_id": "https://dblp.org/pid/37/6513",
+      "name": "Eiji Uchibe",
+      "eligible_coauthor_degree": 3
+    },
+    "expected_distance": 1
+  },
+  "distance_three": {
+    "source": {
+      "person_id": "https://dblp.org/pid/00/100",
+      "name": "Kenji Doya",
+      "eligible_coauthor_degree": 3
+    },
+    "target": {
+      "person_id": "https://dblp.org/pid/01/10264",
+      "name": "Takayuki Katsuki",
+      "eligible_coauthor_degree": 6
+    },
+    "expected_distance": 3,
+    "witness_path": [
+      {
+        "person_id": "https://dblp.org/pid/00/100",
+        "name": "Kenji Doya",
+        "eligible_coauthor_degree": 3
+      },
+      {
+        "person_id": "https://dblp.org/pid/36/1501",
+        "name": "Tetsuro Morimura",
+        "eligible_coauthor_degree": 5
+      },
+      {
+        "person_id": "https://dblp.org/pid/95/5631",
+        "name": "Takayuki Osogami",
+        "eligible_coauthor_degree": 7
+      },
+      {
+        "person_id": "https://dblp.org/pid/01/10264",
+        "name": "Takayuki Katsuki",
+        "eligible_coauthor_degree": 6
+      }
+    ]
+  },
+  "out_of_bound": {
+    "source_id": "https://dblp.org/pid/00/100",
+    "target_id": "https://dblp.org/pid/01/10264",
+    "max_depth": 2,
+    "expected_result": "no row"
+  }
+}

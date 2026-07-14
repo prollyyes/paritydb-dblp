@@ -1,0 +1,157 @@
+{
+  "backend": "postgresql",
+  "query_family": "Q1",
+  "instance_id": "q1_db_yearly",
+  "parameters": {
+    "year_from": 2005,
+    "year_to": 2024,
+    "bucket": "year",
+    "venue_ids": [
+      "https://dblp.org/streams/conf/sigmod",
+      "https://dblp.org/streams/conf/icde",
+      "https://dblp.org/streams/journals/pvldb"
+    ]
+  },
+  "plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Sorted",
+        "Partial Mode": "Simple",
+        "Parallel Aware": false,
+        "Async Capable": false,
+        "Startup Cost": 2444.71,
+        "Total Cost": 2585.59,
+        "Plan Rows": 100,
+        "Plan Width": 47,
+        "Actual Startup Time": 45.787,
+        "Actual Total Time": 47.438,
+        "Actual Rows": 57,
+        "Actual Loops": 1,
+        "Group Key": [
+          "year",
+          "venue_id"
+        ],
+        "Shared Hit Blocks": 342,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "Plans": [
+          {
+            "Node Type": "Sort",
+            "Parent Relationship": "Outer",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 2444.71,
+            "Total Cost": 2479.68,
+            "Plan Rows": 13988,
+            "Plan Width": 82,
+            "Actual Startup Time": 45.737,
+            "Actual Total Time": 46.193,
+            "Actual Rows": 13848,
+            "Actual Loops": 1,
+            "Sort Key": [
+              "year",
+              "venue_id",
+              "publication_id"
+            ],
+            "Sort Method": "quicksort",
+            "Sort Space Used": 1829,
+            "Sort Space Type": "Memory",
+            "Shared Hit Blocks": 342,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Bitmap Heap Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "publication",
+                "Alias": "p",
+                "Startup Cost": 243.23,
+                "Total Cost": 1481.5,
+                "Plan Rows": 13988,
+                "Plan Width": 82,
+                "Actual Startup Time": 0.377,
+                "Actual Total Time": 1.428,
+                "Actual Rows": 13848,
+                "Actual Loops": 1,
+                "Recheck Cond": "((venue_id = ANY ('{https://dblp.org/streams/conf/sigmod,https://dblp.org/streams/conf/icde,https://dblp.org/streams/journals/pvldb}'::text[])) AND (year >= '2005'::smallint) AND (year <= '2024'::smallint))",
+                "Rows Removed by Index Recheck": 0,
+                "Exact Heap Blocks": 318,
+                "Lossy Heap Blocks": 0,
+                "Shared Hit Blocks": 342,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "publication_venue_year_idx",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 239.73,
+                    "Plan Rows": 13988,
+                    "Plan Width": 0,
+                    "Actual Startup Time": 0.352,
+                    "Actual Total Time": 0.352,
+                    "Actual Rows": 13848,
+                    "Actual Loops": 1,
+                    "Index Cond": "((venue_id = ANY ('{https://dblp.org/streams/conf/sigmod,https://dblp.org/streams/conf/icde,https://dblp.org/streams/journals/pvldb}'::text[])) AND (year >= '2005'::smallint) AND (year <= '2024'::smallint))",
+                    "Shared Hit Blocks": 24,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "Planning": {
+        "Shared Hit Blocks": 2,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0
+      },
+      "Planning Time": 0.077,
+      "Triggers": [],
+      "Execution Time": 47.468
+    }
+  ]
+}

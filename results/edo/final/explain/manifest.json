@@ -1,0 +1,50 @@
+[
+  {
+    "query_family": "Q1",
+    "instance_id": "q1_all_decades",
+    "file": "q1_all_decades.json",
+    "sha256": "01da44dfba509fd06f1d5507502e9cb5d04cb3609f140468f4163220bf6e7a14"
+  },
+  {
+    "query_family": "Q1",
+    "instance_id": "q1_database_years",
+    "file": "q1_database_years.json",
+    "sha256": "d9409e3c85e33be2099c368c206903c20b655625e415ffb2e7f3bb1962903835"
+  },
+  {
+    "query_family": "Q1",
+    "instance_id": "q1_ai_years",
+    "file": "q1_ai_years.json",
+    "sha256": "0500c8bebc1d0ae50255599fb68e5aa03dcba0cdac921701808071d10a74cf94"
+  },
+  {
+    "query_family": "Q2",
+    "instance_id": "q2_all_min_2",
+    "file": "q2_all_min_2.json",
+    "sha256": "1f1d25cb979560d2063eaf5381d35d801c80a319f7d224dcac4882c7bdaf0f1f"
+  },
+  {
+    "query_family": "Q2",
+    "instance_id": "q2_database_min_3",
+    "file": "q2_database_min_3.json",
+    "sha256": "72e94aa482d896940a4f6315a46965b1c4a19d07ae688a0316178511399b89df"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_direct_moderate",
+    "file": "q3_direct_moderate.json",
+    "sha256": "37fc3965c1e4ee44daef72da8991380ba9ac7e288adc4cda0c2101ee44a7bdf4"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_distance_3",
+    "file": "q3_distance_3.json",
+    "sha256": "7c32bd17c7793a15e4893cee3502dde9086ebe6c8288735712866eedf651bdbd"
+  },
+  {
+    "query_family": "Q3",
+    "instance_id": "q3_out_of_bound_depth_2",
+    "file": "q3_out_of_bound_depth_2.json",
+    "sha256": "3b38ff878f1902fa3eb1ab68541507feaf8c3d9aef1ccbe3d35090a933646732"
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "joint_campaign_branch": "luca/experimental-campaign",
+  "joint_campaign_commit": "903ef0671a1eb13bd8bfefa401673513b1eb6af0",
+  "dataset_sha256": "e8d99993c461f36fa2a4c1114e74f5d3a50b8932cfced775110ba4afdd0c0c08",
+  "instances_sha256": "6b9e2b659ef172935ad3c3c609aa5ef6d9f7ac5e4f7b7b36c1a109d40dc82cad",
+  "edoardo_scope": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "semantic_validation_passed": true,
+  "all_aligned_hashes_and_row_counts_equal": true,
+  "checks": [
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_all_decades",
+      "row_count": 15,
+      "edo_sql_sha256": "b8da693a510d000e40c558f6a4519a0bd1cf4dd3c3eb6636f8db028dd1bded05",
+      "joint_postgresql_first_sha256": "b8da693a510d000e40c558f6a4519a0bd1cf4dd3c3eb6636f8db028dd1bded05",
+      "joint_fuseki_first_sha256": "b8da693a510d000e40c558f6a4519a0bd1cf4dd3c3eb6636f8db028dd1bded05",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_db_yearly",
+      "row_count": 57,
+      "edo_sql_sha256": "b65f8e7a94399d635069a8e5ebb5e33536c1c084f39b1b1a92d914508cf8f6b4",
+      "joint_postgresql_first_sha256": "b65f8e7a94399d635069a8e5ebb5e33536c1c084f39b1b1a92d914508cf8f6b4",
+      "joint_fuseki_first_sha256": "b65f8e7a94399d635069a8e5ebb5e33536c1c084f39b1b1a92d914508cf8f6b4",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_ai_yearly",
+      "row_count": 39,
+      "edo_sql_sha256": "64b202e8e6e23594a7475bd880a8e688b6c1360d936c39c85a81c683b05644ef",
+      "joint_postgresql_first_sha256": "64b202e8e6e23594a7475bd880a8e688b6c1360d936c39c85a81c683b05644ef",
+      "joint_fuseki_first_sha256": "64b202e8e6e23594a7475bd880a8e688b6c1360d936c39c85a81c683b05644ef",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_db_min3",
+      "row_count": 25,
+      "edo_sql_sha256": "ee65f40db49def629fb51b2bcc57308257416144c5ad30863f6a5d885a3856e7",
+      "joint_postgresql_first_sha256": "ee65f40db49def629fb51b2bcc57308257416144c5ad30863f6a5d885a3856e7",
+      "joint_fuseki_first_sha256": "ee65f40db49def629fb51b2bcc57308257416144c5ad30863f6a5d885a3856e7",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_db_min5",
+      "row_count": 25,
+      "edo_sql_sha256": "ee65f40db49def629fb51b2bcc57308257416144c5ad30863f6a5d885a3856e7",
+      "joint_postgresql_first_sha256": "ee65f40db49def629fb51b2bcc57308257416144c5ad30863f6a5d885a3856e7",
+      "joint_fuseki_first_sha256": "ee65f40db49def629fb51b2bcc57308257416144c5ad30863f6a5d885a3856e7",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_direct_depth2",
+      "row_count": 1,
+      "edo_sql_sha256": "b8f2ee0a105b850d68e3729749267540be022170fa958f539f28bbeaf4b605b5",
+      "joint_postgresql_first_sha256": "b8f2ee0a105b850d68e3729749267540be022170fa958f539f28bbeaf4b605b5",
+      "joint_fuseki_first_sha256": "b8f2ee0a105b850d68e3729749267540be022170fa958f539f28bbeaf4b605b5",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_distance3_depth4",
+      "row_count": 1,
+      "edo_sql_sha256": "747517bd18dab1daab60e5a2bee43a2b47468d144b225e01f0488212f758c98f",
+      "joint_postgresql_first_sha256": "747517bd18dab1daab60e5a2bee43a2b47468d144b225e01f0488212f758c98f",
+      "joint_fuseki_first_sha256": "747517bd18dab1daab60e5a2bee43a2b47468d144b225e01f0488212f758c98f",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_distance3_depth2",
+      "row_count": 0,
+      "edo_sql_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "joint_postgresql_first_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "joint_fuseki_first_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_equal": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_out_of_reach",
+      "row_count": 0,
+      "edo_sql_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "joint_postgresql_first_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "joint_fuseki_first_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "all_equal": true
+    }
+  ]
+}
