@@ -20,9 +20,11 @@ campaign on `luca/experimental-campaign` at commit
 - Edoardo Q1-Q3 projection SHA-256: `5ec556cdbd01ec290478cc62c487c896339fd58be614ab2f319b0309379bd344`.
 
 `dataset.json` and `instances.json` are byte-for-byte copies of the joint
-campaign contract. `instances-q1-q3.json` contains the same Q1-Q3 instance
-objects in the same order and exists only because Edoardo's validator and plan
-collector deliberately reject Q4-Q5.
+campaign contract. `instances-q1-q3.json` preserves the same Q1-Q3 instances
+and ordering from that contract. It is a scope-filtered projection used only by
+Edoardo's PostgreSQL alignment tools, which intentionally operate on his
+assigned Q1-Q3 validation scope. Q4-Q5 remain present in the complete contract
+and the accepted paired campaign.
 
 The previously extracted canonical data records raw config SHA-256
 `3e8b0875...50e4c`, while the joint contract records `e8d99993...0c08`.
