@@ -43,35 +43,11 @@
     }
   ],
   "areas": [
-    {
-      "id": "computer-science",
-      "label": "Computer Science",
-      "parent": null
-    },
-    {
-      "id": "data-management",
-      "label": "Data Management",
-      "parent": "computer-science"
-    },
-    {
-      "id": "database-systems",
-      "label": "Database Systems",
-      "parent": "data-management"
-    },
-    {
-      "id": "artificial-intelligence",
-      "label": "Artificial Intelligence",
-      "parent": "computer-science"
-    },
-    {
-      "id": "data-mining",
-      "label": "Data Mining",
-      "parent": "artificial-intelligence"
-    },
-    {
-      "id": "machine-learning",
-      "label": "Machine Learning",
-      "parent": "artificial-intelligence"
-    }
+    {"id": "computer-science", "label": "Computer Science", "parent": null},
+    {"id": "data-management", "label": "Data Management", "parent": "computer-science"},
+    {"id": "database-systems", "label": "Database Systems", "parent": "data-management"},
+    {"id": "artificial-intelligence", "label": "Artificial Intelligence", "parent": "computer-science"},
+    {"id": "data-mining", "label": "Data Mining", "parent": "artificial-intelligence"},
+    {"id": "machine-learning", "label": "Machine Learning", "parent": "artificial-intelligence"}
   ]
 }

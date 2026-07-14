@@ -11,6 +11,7 @@ import statistics
 import time
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
@@ -124,18 +125,84 @@ def _record(profile: str, instance_id: str, backend: str, kind: str, number: int
         return dict(zip(RESULT_COLUMNS, [profile, instance_id, backend, kind, number, "", 0, "", False, str(exc)]))
 
 
+def execution_schedule(
+    warmups: int,
+    repetitions: int,
+    policy: str,
+    instance_index: int,
+) -> list[tuple[str, int, str]]:
+    """Return the deterministic backend order outside the timed query boundary."""
+    if policy == "blocked":
+        return [
+            (kind, number, backend)
+            for backend in ("postgresql", "fuseki")
+            for kind, count in (("warmup", warmups), ("measured", repetitions))
+            for number in range(1, count + 1)
+        ]
+    schedule: list[tuple[str, int, str]] = []
+    for kind, count in (("warmup", warmups), ("measured", repetitions)):
+        for number in range(1, count + 1):
+            order = ("postgresql", "fuseki")
+            if (instance_index + number) % 2:
+                order = tuple(reversed(order))
+            schedule.extend((kind, number, backend) for backend in order)
+    return schedule
+
+
+def _progress(path: Path | None, event: str, **details: Any) -> None:
+    record = {
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+        "event": event,
+        **details,
+    }
+    print(json.dumps(record, sort_keys=True), flush=True)
+    if path is not None:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as target:
+            target.write(json.dumps(record, sort_keys=True) + "\n")
+
+
+def correctness_matches(checks: dict[str, dict[str, Any]]) -> bool:
+    return (
+        checks["postgresql"]["row_count"] == checks["fuseki"]["row_count"]
+        and checks["postgresql"]["result_sha256"]
+        == checks["fuseki"]["result_sha256"]
+    )
+
+
 def benchmark(args: argparse.Namespace) -> None:
     dataset_bytes = args.dataset.read_bytes()
     dataset_digest = hashlib.sha256(dataset_bytes).hexdigest()
     dataset = json.loads(dataset_bytes)
     instances = json.loads(args.instances.read_text(encoding="utf-8"))["instances"]
+    enabled_instances = [instance for instance in instances if instance.get("enabled", True)]
     records: list[dict[str, Any]] = []
     failure: str | None = None
+    if args.progress_log is not None:
+        args.progress_log.parent.mkdir(parents=True, exist_ok=True)
+        args.progress_log.write_text("", encoding="utf-8")
+    _progress(
+        args.progress_log,
+        "campaign_started",
+        instances=len(enabled_instances),
+        execution_order=args.execution_order,
+    )
     with psycopg.connect(args.dsn) as connection:
         connection.execute("SELECT set_config('statement_timeout', %s, false)", (f"{args.timeout_seconds}s",))
-        for instance in instances:
+        enabled_ordinal = 0
+        for instance_index, instance in enumerate(instances):
             if not instance.get("enabled", True):
                 continue
+            enabled_ordinal += 1
+            ordinal = enabled_ordinal
+            _progress(
+                args.progress_log,
+                "instance_started",
+                instance_id=instance["id"],
+                profile=instance["profile"],
+                ordinal=ordinal,
+                total=len(enabled_instances),
+            )
             profile = instance["profile"]
             params = dict(instance["parameters"])
             params["venue_ids"] = _venue_ids(params, dataset) if "venue_ids" in params else None
@@ -148,22 +215,63 @@ def benchmark(args: argparse.Namespace) -> None:
             }
             # These are the actual first executions as well as the correctness gate;
             # no hidden query warms either backend before them.
-            checks = {backend: _record(profile, instance["id"], backend, "first", 1, run) for backend, run in runners.items()}
-            records.extend(checks.values())
+            first_order = ("postgresql", "fuseki")
+            if args.execution_order == "interleaved" and instance_index % 2:
+                first_order = tuple(reversed(first_order))
+            checks = {}
+            for backend in first_order:
+                checks[backend] = _record(
+                    profile, instance["id"], backend, "first", 1, runners[backend]
+                )
+                records.append(checks[backend])
             if any(not row["success"] for row in checks.values()):
                 failure = f"first/correctness execution failed for {instance['id']}"
+                _progress(
+                    args.progress_log,
+                    "instance_failed",
+                    instance_id=instance["id"],
+                    reason=failure,
+                )
                 break
-            if checks["postgresql"]["result_sha256"] != checks["fuseki"]["result_sha256"]:
+            if not correctness_matches(checks):
                 failure = f"correctness gate failed for {instance['id']}"
+                _progress(
+                    args.progress_log,
+                    "instance_failed",
+                    instance_id=instance["id"],
+                    reason=failure,
+                )
                 break
-            for backend, run in runners.items():
-                for number in range(1, args.warmups + 1):
-                    records.append(_record(profile, instance["id"], backend, "warmup", number, run))
-                for number in range(1, args.repetitions + 1):
-                    records.append(_record(profile, instance["id"], backend, "measured", number, run))
+            schedule = execution_schedule(
+                args.warmups, args.repetitions, args.execution_order, instance_index
+            )
+            for kind, number, backend in schedule:
+                records.append(
+                    _record(
+                        profile,
+                        instance["id"],
+                        backend,
+                        kind,
+                        number,
+                        runners[backend],
+                    )
+                )
             if any(not row["success"] for row in records if row["instance_id"] == instance["id"]):
                 failure = f"timed execution failed for {instance['id']}"
+                _progress(
+                    args.progress_log,
+                    "instance_failed",
+                    instance_id=instance["id"],
+                    reason=failure,
+                )
                 break
+            _progress(
+                args.progress_log,
+                "instance_completed",
+                instance_id=instance["id"],
+                ordinal=ordinal,
+                total=len(enabled_instances),
+            )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", encoding="utf-8", newline="") as target:
@@ -178,10 +286,18 @@ def benchmark(args: argparse.Namespace) -> None:
         "timeout_seconds": args.timeout_seconds,
         "warmups": args.warmups,
         "repetitions": args.repetitions,
+        "execution_order": args.execution_order,
         "success": failure is None,
         "failure": failure,
     }
     args.output.with_name("campaign.json").write_text(json.dumps(campaign, indent=2) + "\n", encoding="utf-8")
+    _progress(
+        args.progress_log,
+        "campaign_completed" if failure is None else "campaign_failed",
+        success=failure is None,
+        failure=failure,
+        rows=len(records),
+    )
     if failure:
         raise RuntimeError(failure)
 
@@ -220,6 +336,17 @@ def main() -> None:
     parser.add_argument("--warmups", type=int, default=2)
     parser.add_argument("--repetitions", type=int, default=5)
     parser.add_argument("--timeout-seconds", type=int, default=300)
+    parser.add_argument(
+        "--execution-order",
+        choices=("blocked", "interleaved"),
+        default="blocked",
+        help="backend scheduling policy; interleaved alternates the backend run order",
+    )
+    parser.add_argument(
+        "--progress-log",
+        type=Path,
+        help="optional UTC instance progress log written outside timed query execution",
+    )
     parser.add_argument("--scale", default="pilot", help="dataset scale label recorded in campaign evidence")
     args = parser.parse_args()
     if args.repetitions < 5:
