@@ -1,0 +1,41 @@
+{
+  "source": {
+    "release_date": "2026-06-01",
+    "doi": "10.4230/dblp.rdf.ntriples.2026-06-01",
+    "landing_page": "https://doi.org/10.4230/dblp.rdf.ntriples.2026-06-01",
+    "download_url": "https://drops.dagstuhl.de/storage/artifacts/dblp/rdf/2026/dblp-2026-06-01.nt.gz",
+    "md5": "0f361aac50ce087524d5ac4bcf25cad2",
+    "schema_revision": "2024-06-14"
+  },
+  "source_file": "dblp-2026-06-01.nt.gz",
+  "source_md5": "0f361aac50ce087524d5ac4bcf25cad2",
+  "source_sha256": "6a1edc1b7aebcd7a581bc4313243029952af4af0fbf900e4126a72d6deb92309",
+  "config_sha256": "197ce97b0542efa739545e12d65852bffff04caaf2cd1552a988e6de7a7e6fa8",
+  "venues": [
+    "https://dblp.org/streams/conf/icde",
+    "https://dblp.org/streams/conf/kdd",
+    "https://dblp.org/streams/conf/nips",
+    "https://dblp.org/streams/conf/sigmod",
+    "https://dblp.org/streams/journals/pvldb"
+  ],
+  "selection": {
+    "year_from": 2005,
+    "year_to": 2024,
+    "max_publications": 5000
+  },
+  "policy": {
+    "multiple_selected_venues": "excluded",
+    "ambiguous_creators": "excluded",
+    "author_position": "not extracted; direct authoredBy has no ordering",
+    "pilot_sampling": "stratified by venue, then stable SHA-256 of publication IRI"
+  },
+  "counts": {
+    "publications": 5000,
+    "persons": 12826,
+    "authorships": 20492,
+    "selected_venue_candidates": 51584,
+    "excluded_multiple_selected_venues": 0,
+    "excluded_ambiguous_creators": 1080,
+    "missing_primary_names": 0
+  }
+}

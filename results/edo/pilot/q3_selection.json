@@ -1,0 +1,70 @@
+{
+  "backend": "postgresql",
+  "eligible_graph": {
+    "year_from": 2005,
+    "year_to": 2024,
+    "venue_ids": [
+      "https://dblp.org/streams/conf/sigmod",
+      "https://dblp.org/streams/conf/icde",
+      "https://dblp.org/streams/journals/pvldb",
+      "https://dblp.org/streams/conf/kdd",
+      "https://dblp.org/streams/conf/nips"
+    ],
+    "people_with_edges": 12691,
+    "undirected_edges": 42017
+  },
+  "direct": {
+    "source": {
+      "person_id": "https://dblp.org/pid/00/10545",
+      "name": "Bryan Dawei He",
+      "eligible_coauthor_degree": 3
+    },
+    "target": {
+      "person_id": "https://dblp.org/pid/83/8757",
+      "name": "Ioannis Mitliagkas",
+      "eligible_coauthor_degree": 3
+    },
+    "expected_distance": 1
+  },
+  "distance_three": {
+    "source": {
+      "person_id": "https://dblp.org/pid/00/10000",
+      "name": "Onur Yilmaz",
+      "eligible_coauthor_degree": 5
+    },
+    "target": {
+      "person_id": "https://dblp.org/pid/02/2624",
+      "name": "Kelly Palmer",
+      "eligible_coauthor_degree": 5
+    },
+    "expected_distance": 3,
+    "witness_path": [
+      {
+        "person_id": "https://dblp.org/pid/00/10000",
+        "name": "Onur Yilmaz",
+        "eligible_coauthor_degree": 5
+      },
+      {
+        "person_id": "https://dblp.org/pid/134/4016",
+        "name": "Bradley Rees",
+        "eligible_coauthor_degree": 38
+      },
+      {
+        "person_id": "https://dblp.org/pid/38/828",
+        "name": "David D. Jensen",
+        "eligible_coauthor_degree": 39
+      },
+      {
+        "person_id": "https://dblp.org/pid/02/2624",
+        "name": "Kelly Palmer",
+        "eligible_coauthor_degree": 5
+      }
+    ]
+  },
+  "out_of_bound": {
+    "source_id": "https://dblp.org/pid/00/10000",
+    "target_id": "https://dblp.org/pid/02/2624",
+    "max_depth": 2,
+    "expected_result": "no row"
+  }
+}

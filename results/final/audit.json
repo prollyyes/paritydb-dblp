@@ -1,0 +1,283 @@
+{
+  "raw_rows": 208,
+  "expected_raw_rows": 208,
+  "summary_rows": 26,
+  "expected_summary_rows": 26,
+  "all_executions_successful": true,
+  "execution_count_failures": [],
+  "paired_correctness_failures": [],
+  "summary_recomputation_failures": [],
+  "observed_execution_groups": 78,
+  "expected_execution_groups": 78,
+  "observed_first_pairs": 13,
+  "expected_first_pairs": 13,
+  "observed_measured_series": 26,
+  "expected_measured_series": 26,
+  "variability_threshold": 0.1,
+  "flagged_series": 22,
+  "total_series": 26,
+  "accepted": true,
+  "variability_interpretation": "No external disturbance, timeout, service failure, or configuration change was identified. Preserve all runs and report median plus min/max; do not cherry-pick.",
+  "series": [
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_ai_yearly",
+      "backend": "fuseki",
+      "median_ms": 141.887,
+      "min_ms": 129.389,
+      "max_ms": 210.917,
+      "spread_ratio": 0.5746,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_ai_yearly",
+      "backend": "postgresql",
+      "median_ms": 115.817,
+      "min_ms": 113.635,
+      "max_ms": 139.011,
+      "spread_ratio": 0.2191,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_all_decades",
+      "backend": "fuseki",
+      "median_ms": 204.131,
+      "min_ms": 131.462,
+      "max_ms": 228.005,
+      "spread_ratio": 0.4729,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_all_decades",
+      "backend": "postgresql",
+      "median_ms": 209.574,
+      "min_ms": 207.76,
+      "max_ms": 258.577,
+      "spread_ratio": 0.2425,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_db_yearly",
+      "backend": "fuseki",
+      "median_ms": 100.736,
+      "min_ms": 67.171,
+      "max_ms": 106.811,
+      "spread_ratio": 0.3935,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q1",
+      "instance_id": "q1_db_yearly",
+      "backend": "postgresql",
+      "median_ms": 49.465,
+      "min_ms": 47.752,
+      "max_ms": 53.025,
+      "spread_ratio": 0.1066,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_db_min3",
+      "backend": "fuseki",
+      "median_ms": 138693.932,
+      "min_ms": 100373.258,
+      "max_ms": 144702.508,
+      "spread_ratio": 0.3196,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_db_min3",
+      "backend": "postgresql",
+      "median_ms": 508.687,
+      "min_ms": 477.046,
+      "max_ms": 553.683,
+      "spread_ratio": 0.1507,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_db_min5",
+      "backend": "fuseki",
+      "median_ms": 79677.175,
+      "min_ms": 69865.411,
+      "max_ms": 81931.349,
+      "spread_ratio": 0.1514,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q2",
+      "instance_id": "q2_db_min5",
+      "backend": "postgresql",
+      "median_ms": 1429.086,
+      "min_ms": 1354.699,
+      "max_ms": 1499.057,
+      "spread_ratio": 0.101,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_direct_depth2",
+      "backend": "fuseki",
+      "median_ms": 21725.391,
+      "min_ms": 12064.459,
+      "max_ms": 23464.24,
+      "spread_ratio": 0.5247,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_direct_depth2",
+      "backend": "postgresql",
+      "median_ms": 14771.384,
+      "min_ms": 14512.568,
+      "max_ms": 15776.396,
+      "spread_ratio": 0.0856,
+      "flagged_over_10_percent": false
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_distance3_depth2",
+      "backend": "fuseki",
+      "median_ms": 122.124,
+      "min_ms": 81.399,
+      "max_ms": 173.704,
+      "spread_ratio": 0.7558,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_distance3_depth2",
+      "backend": "postgresql",
+      "median_ms": 215.111,
+      "min_ms": 211.753,
+      "max_ms": 220.828,
+      "spread_ratio": 0.0422,
+      "flagged_over_10_percent": false
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_distance3_depth4",
+      "backend": "fuseki",
+      "median_ms": 110097.174,
+      "min_ms": 101895.732,
+      "max_ms": 124496.245,
+      "spread_ratio": 0.2053,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_distance3_depth4",
+      "backend": "postgresql",
+      "median_ms": 8368.978,
+      "min_ms": 7924.572,
+      "max_ms": 8698.965,
+      "spread_ratio": 0.0925,
+      "flagged_over_10_percent": false
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_out_of_reach",
+      "backend": "fuseki",
+      "median_ms": 101906.54,
+      "min_ms": 95767.038,
+      "max_ms": 143948.531,
+      "spread_ratio": 0.4728,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q3",
+      "instance_id": "q3_pvldb_out_of_reach",
+      "backend": "postgresql",
+      "median_ms": 7893.591,
+      "min_ms": 7859.147,
+      "max_ms": 8122.547,
+      "spread_ratio": 0.0334,
+      "flagged_over_10_percent": false
+    },
+    {
+      "query_family": "Q4",
+      "instance_id": "q4_moderate_min1",
+      "backend": "fuseki",
+      "median_ms": 19097.812,
+      "min_ms": 11340.653,
+      "max_ms": 22846.371,
+      "spread_ratio": 0.6025,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q4",
+      "instance_id": "q4_moderate_min1",
+      "backend": "postgresql",
+      "median_ms": 1490.132,
+      "min_ms": 1426.398,
+      "max_ms": 1862.998,
+      "spread_ratio": 0.293,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q4",
+      "instance_id": "q4_moderate_min2",
+      "backend": "fuseki",
+      "median_ms": 35070.092,
+      "min_ms": 21753.183,
+      "max_ms": 53679.422,
+      "spread_ratio": 0.9104,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q4",
+      "instance_id": "q4_moderate_min2",
+      "backend": "postgresql",
+      "median_ms": 3289.884,
+      "min_ms": 2769.483,
+      "max_ms": 5534.352,
+      "spread_ratio": 0.8404,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q5",
+      "instance_id": "q5_ai_min2",
+      "backend": "fuseki",
+      "median_ms": 1437.111,
+      "min_ms": 1340.231,
+      "max_ms": 1540.585,
+      "spread_ratio": 0.1394,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q5",
+      "instance_id": "q5_ai_min2",
+      "backend": "postgresql",
+      "median_ms": 902.041,
+      "min_ms": 783.58,
+      "max_ms": 957.821,
+      "spread_ratio": 0.1932,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q5",
+      "instance_id": "q5_dm_min1",
+      "backend": "fuseki",
+      "median_ms": 1488.39,
+      "min_ms": 1444.274,
+      "max_ms": 1611.605,
+      "spread_ratio": 0.1124,
+      "flagged_over_10_percent": true
+    },
+    {
+      "query_family": "Q5",
+      "instance_id": "q5_dm_min1",
+      "backend": "postgresql",
+      "median_ms": 406.087,
+      "min_ms": 372.886,
+      "max_ms": 479.923,
+      "spread_ratio": 0.2636,
+      "flagged_over_10_percent": true
+    }
+  ]
+}

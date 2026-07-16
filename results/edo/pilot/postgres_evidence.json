@@ -1,0 +1,454 @@
+{
+  "backend": "postgresql",
+  "server": {
+    "version": "PostgreSQL 17.10 (Debian 17.10-1.pgdg12+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "version_num": "170010"
+  },
+  "settings": [
+    {
+      "name": "effective_cache_size",
+      "setting": "524288",
+      "unit": "8kB",
+      "source": "default"
+    },
+    {
+      "name": "effective_io_concurrency",
+      "setting": "1",
+      "unit": null,
+      "source": "default"
+    },
+    {
+      "name": "jit",
+      "setting": "on",
+      "unit": null,
+      "source": "default"
+    },
+    {
+      "name": "maintenance_work_mem",
+      "setting": "65536",
+      "unit": "kB",
+      "source": "default"
+    },
+    {
+      "name": "max_parallel_workers_per_gather",
+      "setting": "2",
+      "unit": null,
+      "source": "default"
+    },
+    {
+      "name": "random_page_cost",
+      "setting": "4",
+      "unit": null,
+      "source": "default"
+    },
+    {
+      "name": "shared_buffers",
+      "setting": "16384",
+      "unit": "8kB",
+      "source": "configuration file"
+    },
+    {
+      "name": "statement_timeout",
+      "setting": "0",
+      "unit": "ms",
+      "source": "default"
+    },
+    {
+      "name": "track_io_timing",
+      "setting": "off",
+      "unit": null,
+      "source": "default"
+    },
+    {
+      "name": "work_mem",
+      "setting": "4096",
+      "unit": "kB",
+      "source": "default"
+    }
+  ],
+  "counts": {
+    "postgresql": {
+      "venue": 5,
+      "person": 12826,
+      "area": 6,
+      "publication": 5000,
+      "authorship": 20492,
+      "venue_area": 5
+    },
+    "canonical_csv": {
+      "venue": 5,
+      "person": 12826,
+      "area": 6,
+      "publication": 5000,
+      "authorship": 20492,
+      "venue_area": 5
+    },
+    "metadata": {
+      "publication": 5000,
+      "person": 12826,
+      "authorship": 20492
+    },
+    "postgresql_matches_csv": true,
+    "postgresql_matches_metadata": true
+  },
+  "table_sizes": [
+    {
+      "table_name": "area",
+      "table_bytes": 8192,
+      "index_bytes": 32768,
+      "total_bytes": 49152
+    },
+    {
+      "table_name": "authorship",
+      "table_bytes": 2359296,
+      "index_bytes": 3375104,
+      "total_bytes": 5742592
+    },
+    {
+      "table_name": "person",
+      "table_bytes": 1179648,
+      "index_bytes": 802816,
+      "total_bytes": 1990656
+    },
+    {
+      "table_name": "publication",
+      "table_bytes": 1179648,
+      "index_bytes": 409600,
+      "total_bytes": 1597440
+    },
+    {
+      "table_name": "venue",
+      "table_bytes": 8192,
+      "index_bytes": 16384,
+      "total_bytes": 32768
+    },
+    {
+      "table_name": "venue_area",
+      "table_bytes": 8192,
+      "index_bytes": 16384,
+      "total_bytes": 32768
+    }
+  ],
+  "schema": {
+    "columns": [
+      {
+        "table_name": "area",
+        "ordinal_position": 1,
+        "column_name": "area_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "area",
+        "ordinal_position": 2,
+        "column_name": "label",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "area",
+        "ordinal_position": 3,
+        "column_name": "parent_area_id",
+        "data_type": "text",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "authorship",
+        "ordinal_position": 1,
+        "column_name": "publication_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "authorship",
+        "ordinal_position": 2,
+        "column_name": "person_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "authorship",
+        "ordinal_position": 3,
+        "column_name": "author_position",
+        "data_type": "integer",
+        "is_nullable": "YES"
+      },
+      {
+        "table_name": "person",
+        "ordinal_position": 1,
+        "column_name": "person_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "person",
+        "ordinal_position": 2,
+        "column_name": "name",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "publication",
+        "ordinal_position": 1,
+        "column_name": "publication_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "publication",
+        "ordinal_position": 2,
+        "column_name": "title",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "publication",
+        "ordinal_position": 3,
+        "column_name": "year",
+        "data_type": "integer",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "publication",
+        "ordinal_position": 4,
+        "column_name": "venue_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "venue",
+        "ordinal_position": 1,
+        "column_name": "venue_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "venue",
+        "ordinal_position": 2,
+        "column_name": "label",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "venue",
+        "ordinal_position": 3,
+        "column_name": "venue_kind",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "venue_area",
+        "ordinal_position": 1,
+        "column_name": "venue_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      },
+      {
+        "table_name": "venue_area",
+        "ordinal_position": 2,
+        "column_name": "area_id",
+        "data_type": "text",
+        "is_nullable": "NO"
+      }
+    ],
+    "constraints": [
+      {
+        "table_name": "area",
+        "constraint_name": "2200_16521_1_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "area",
+        "constraint_name": "2200_16521_2_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "area",
+        "constraint_name": "area_parent_area_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "area",
+        "constraint_name": "area_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "authorship",
+        "constraint_name": "2200_16503_1_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "authorship",
+        "constraint_name": "2200_16503_2_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "authorship",
+        "constraint_name": "authorship_author_position_check",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "authorship",
+        "constraint_name": "authorship_person_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "authorship",
+        "constraint_name": "authorship_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "authorship",
+        "constraint_name": "authorship_publication_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "person",
+        "constraint_name": "2200_16475_1_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "person",
+        "constraint_name": "2200_16475_2_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "person",
+        "constraint_name": "person_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "2200_16490_1_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "2200_16490_2_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "2200_16490_3_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "2200_16490_4_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "publication_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "publication_venue_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "publication",
+        "constraint_name": "publication_year_check",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue",
+        "constraint_name": "2200_16482_1_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue",
+        "constraint_name": "2200_16482_2_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue",
+        "constraint_name": "2200_16482_3_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue",
+        "constraint_name": "venue_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "venue",
+        "constraint_name": "venue_venue_kind_check",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue_area",
+        "constraint_name": "2200_16533_1_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue_area",
+        "constraint_name": "2200_16533_2_not_null",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "venue_area",
+        "constraint_name": "venue_area_area_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "venue_area",
+        "constraint_name": "venue_area_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "venue_area",
+        "constraint_name": "venue_area_venue_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      }
+    ],
+    "indexes": [
+      {
+        "table_name": "area",
+        "index_name": "area_parent_idx",
+        "definition": "CREATE INDEX area_parent_idx ON public.area USING btree (parent_area_id)"
+      },
+      {
+        "table_name": "area",
+        "index_name": "area_pkey",
+        "definition": "CREATE UNIQUE INDEX area_pkey ON public.area USING btree (area_id)"
+      },
+      {
+        "table_name": "authorship",
+        "index_name": "authorship_person_idx",
+        "definition": "CREATE INDEX authorship_person_idx ON public.authorship USING btree (person_id)"
+      },
+      {
+        "table_name": "authorship",
+        "index_name": "authorship_pkey",
+        "definition": "CREATE UNIQUE INDEX authorship_pkey ON public.authorship USING btree (publication_id, person_id)"
+      },
+      {
+        "table_name": "person",
+        "index_name": "person_pkey",
+        "definition": "CREATE UNIQUE INDEX person_pkey ON public.person USING btree (person_id)"
+      },
+      {
+        "table_name": "publication",
+        "index_name": "publication_pkey",
+        "definition": "CREATE UNIQUE INDEX publication_pkey ON public.publication USING btree (publication_id)"
+      },
+      {
+        "table_name": "publication",
+        "index_name": "publication_venue_year_idx",
+        "definition": "CREATE INDEX publication_venue_year_idx ON public.publication USING btree (venue_id, year)"
+      },
+      {
+        "table_name": "venue",
+        "index_name": "venue_pkey",
+        "definition": "CREATE UNIQUE INDEX venue_pkey ON public.venue USING btree (venue_id)"
+      },
+      {
+        "table_name": "venue_area",
+        "index_name": "venue_area_pkey",
+        "definition": "CREATE UNIQUE INDEX venue_area_pkey ON public.venue_area USING btree (venue_id, area_id)"
+      }
+    ]
+  }
+}

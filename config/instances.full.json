@@ -1,0 +1,171 @@
+{
+  "instances": [
+    {
+      "id": "q1_all_decades",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {"year_from": 2005, "year_to": 2024, "bucket": "decade", "venue_ids": "all"}
+    },
+    {
+      "id": "q1_db_yearly",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "bucket": "year",
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      }
+    },
+    {
+      "id": "q1_ai_yearly",
+      "profile": "Q1",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "bucket": "year",
+        "venue_ids": [
+          "https://dblp.org/streams/conf/kdd",
+          "https://dblp.org/streams/conf/nips"
+        ]
+      }
+    },
+    {
+      "id": "q2_db_min3",
+      "profile": "Q2",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "min_publications": 3,
+        "limit": 25,
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      }
+    },
+    {
+      "id": "q2_db_min5",
+      "profile": "Q2",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "min_publications": 5,
+        "limit": 25,
+        "venue_ids": [
+          "https://dblp.org/streams/conf/sigmod",
+          "https://dblp.org/streams/conf/icde",
+          "https://dblp.org/streams/journals/pvldb"
+        ]
+      }
+    },
+    {
+      "id": "q3_direct_depth2",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 2,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/47/179",
+        "target_id": "https://dblp.org/pid/l/LinXuemin"
+      }
+    },
+    {
+      "id": "q3_pvldb_distance3_depth4",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 4,
+        "venue_ids": ["https://dblp.org/streams/journals/pvldb"],
+        "source_id": "https://dblp.org/pid/01/5237",
+        "target_id": "https://dblp.org/pid/125/6665"
+      }
+    },
+    {
+      "id": "q3_pvldb_distance3_depth2",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 2,
+        "venue_ids": ["https://dblp.org/streams/journals/pvldb"],
+        "source_id": "https://dblp.org/pid/01/5237",
+        "target_id": "https://dblp.org/pid/125/6665"
+      }
+    },
+    {
+      "id": "q3_pvldb_out_of_reach",
+      "profile": "Q3",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "max_depth": 4,
+        "venue_ids": ["https://dblp.org/streams/journals/pvldb"],
+        "source_id": "https://dblp.org/pid/01/5237",
+        "target_id": "https://dblp.org/pid/90/9635"
+      }
+    },
+    {
+      "id": "q4_moderate_min1",
+      "profile": "Q4",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/91/6560",
+        "min_mutuals": 1,
+        "limit": 25
+      }
+    },
+    {
+      "id": "q4_moderate_min2",
+      "profile": "Q4",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "venue_ids": "all",
+        "source_id": "https://dblp.org/pid/91/6560",
+        "min_mutuals": 2,
+        "limit": 25
+      }
+    },
+    {
+      "id": "q5_dm_min1",
+      "profile": "Q5",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "ancestor_area": "data-management",
+        "min_distinct_areas": 1
+      }
+    },
+    {
+      "id": "q5_ai_min2",
+      "profile": "Q5",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "ancestor_area": "artificial-intelligence",
+        "min_distinct_areas": 2
+      }
+    }
+  ]
+}
