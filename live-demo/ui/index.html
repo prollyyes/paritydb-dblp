@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Presentation dashboard for the ParityDB DBLP benchmark campaign">
+    <title>ParityDB · Evidence Console</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav shell" aria-label="Dashboard navigation">
+        <a class="brand" href="#top" aria-label="ParityDB home">
+          <span class="brand-mark">P</span>
+          <span>ParityDB <small>Evidence Console</small></span>
+        </a>
+        <div class="nav-meta"><span class="signal"></span> June 2026 snapshot</div>
+      </nav>
+
+      <div class="hero-grid shell" id="top">
+        <div>
+          <p class="eyebrow">SQL × SPARQL · paired evaluation</p>
+          <h1>Same facts.<br><em>Different engines.</em></h1>
+          <p class="hero-copy">A correctness-gated comparison of PostgreSQL and Apache Jena Fuseki over equivalent DBLP representations.</p>
+          <div class="hero-stats" aria-label="Campaign summary">
+            <div><strong>13</strong><span>paired instances</span></div>
+            <div><strong>208</strong><span>successful executions</span></div>
+            <div><strong>100%</strong><span>result parity</span></div>
+          </div>
+        </div>
+        <div class="pipeline-card" aria-label="Data pipeline">
+          <p class="card-kicker">One canonical source</p>
+          <div class="pipeline">
+            <div class="node source">Pinned DBLP snapshot</div>
+            <span class="down">↓</span>
+            <div class="node canonical">Deterministic canonical CSV</div>
+            <div class="split"><span>↙</span><span>↘</span></div>
+            <div class="backends"><div>PostgreSQL<br><small>normalized tables</small></div><div>Fuseki<br><small>canonical RDF</small></div></div>
+            <div class="merge"><span>↘</span><span>↙</span></div>
+            <div class="node gate">Paired correctness gate</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section shell" aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">Accepted campaign</p><h2 id="evidence-title">Explore the evidence</h2></div>
+          <label class="select-label">Query instance<select id="instance-select" aria-label="Select query instance"></select></label>
+        </div>
+
+        <div class="evidence-grid">
+          <article class="panel result-panel">
+            <div class="panel-top"><span id="family-pill" class="pill">Q1</span><span id="correctness" class="verified">✓ correctness passed</span></div>
+            <h3 id="query-title">Loading evidence…</h3>
+            <p id="query-description" class="muted"></p>
+            <div id="bars" class="bars" aria-live="polite"></div>
+            <div class="range-note">Bars show accepted median latency; whisker text reports the measured min–max range.</div>
+          </article>
+
+          <article class="panel advisor-panel">
+            <p class="card-kicker">Explainable router audit</p>
+            <div class="recommendation"><span>Structural rule</span><strong id="recommendation">—</strong></div>
+            <p id="reason" class="muted"></p>
+            <div class="recommendation measured"><span>Measured winner</span><strong id="measured-winner">—</strong></div>
+            <div id="advisor-outcome" class="outcome"></div>
+            <p class="takeaway">The router is a falsifiable heuristic, not an oracle. Its errors are part of the research result.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section contrast" aria-labelledby="live-title">
+        <div class="shell live-grid">
+          <div>
+            <p class="eyebrow">Runtime replication</p>
+            <h2 id="live-title">What changed live?</h2>
+            <p>Correctness must remain identical. Latency may move because VM, engine, network path, client placement, caches, and scheduler state are part of the execution environment.</p>
+            <p class="caution"><strong>Claim boundary:</strong> these runs show environment sensitivity; they do not isolate Docker Desktop versus Colima as the causal variable.</p>
+          </div>
+          <article class="live-card">
+            <div class="panel-top"><span class="pill live">Latest Q5</span><button id="refresh-live" type="button">Refresh live result</button></div>
+            <div id="live-result" class="live-result" aria-live="polite">
+              <p>No live replication loaded yet.</p><code>live-demo/demo.sh 1</code>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section shell conclusion" aria-labelledby="finding-title">
+        <p class="eyebrow">Central finding</p>
+        <h2 id="finding-title">Query shape alone was not a reliable latency router.</h2>
+        <p>Graph-shaped workloads did not automatically favor the graph backend. The strongest contribution is the measured mismatch between a reasonable structural heuristic and correctness-equivalent execution evidence.</p>
+        <div class="finding-strip">
+          <span>Semantics held</span><span>Performance was contextual</span><span>Heuristics need calibration</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell"><span>ParityDB-DBLP</span><span>Edoardo · Luca</span><span>Data Management · 2026</span></footer>
+  </body>
+</html>

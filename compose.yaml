@@ -18,3 +18,35 @@ services:
       dockerfile: Dockerfile.fuseki
     ports:
       - "3030:3030"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS 'http://localhost:3030/$$/ping'"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  app:
+    profiles: ["demo"]
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    environment:
+      DEMO_RUNTIME_LABEL: ${DEMO_RUNTIME_LABEL:-unspecified}
+    volumes:
+      - ./data:/workspace/data:ro
+      - ./live-demo/runs:/workspace/live-demo/runs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      fuseki:
+        condition: service_healthy
+
+  ui:
+    profiles: ["demo"]
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    command: ["python", "-m", "http.server", "8000", "--directory", "/workspace/live-demo/ui"]
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./live-demo/runs:/workspace/live-demo/ui/runs:ro

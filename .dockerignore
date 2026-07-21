@@ -1,0 +1,13 @@
+.git
+.venv
+__pycache__
+.pytest_cache
+*.egg-info
+.DS_Store
+data
+live-demo/runs
+results/archive
+results/edo
+results/final/figures
+results/final/postgresql-explain
+results/final/* 2.*

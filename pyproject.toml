@@ -22,6 +22,7 @@ dm-load-postgres = "dm_project.load_postgres:main"
 dm-load-fuseki = "dm_project.load_fuseki:main"
 dm-benchmark = "dm_project.benchmark:main"
 dm-advisor = "dm_project.advisor:main"
+dm-demo = "dm_project.demo:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,202 +1,217 @@
-# Live demo — ParityDB-DBLP
+# Containerized live demo and runtime replication
 
-Terminal-only demo in three beats, plus an optional live re-execution of the
-benchmark. Everything runs from the repository root through
-`live-demo/demo.sh` and leaves **no files behind**: the benchmark runner
-needs a working file, so the script points it at a temporary directory that
-is deleted on exit. Nothing inside the repository (in particular
-`results/final/`) is ever written.
+The live demo runs the project tooling in Docker and orchestrates PostgreSQL,
+Fuseki, fresh data loads, the benchmark, and the comparison through Docker
+Compose. The host needs only Docker with the Compose plugin and the previously
+generated full-scale data under `data/`.
 
-```bash
-live-demo/demo.sh 1     # beat 1: live paired run (correctness gate + timings)
-live-demo/demo.sh 2     # beat 2: advisor on Q5
-live-demo/demo.sh 3     # beat 3: advisor on deep Q3
-live-demo/demo.sh all   # all three, pausing for ENTER between beats
-```
+The accepted campaign under `results/final/` is immutable reference evidence.
+Every live run is a **runtime replication** stored under the ignored directory
+`live-demo/runs/`; it never overwrites or replaces the accepted campaign.
 
-## The three beats
+## Why runtime provenance matters
 
-### Beat 1 — the correctness gate, live (~9 s of execution)
+The accepted campaign used a Colima VM with 10 vCPUs and 8 GiB. A later run
+under Docker Desktop produced different absolute timings and four mechanical
+median-winner flips. Equal advertised CPU and memory do not make the
+environments identical: the Docker engine, Linux VM, virtualization and
+networking path, scheduler state, and service lifecycle may still differ.
 
-Runs the real campaign protocol (1 first/correctness run, 2 warm-ups, 5
-measured repetitions, interleaved backend order) on the single instance
-`q5_ai_min2`, against the live PostgreSQL and Fuseki services.
+The observed difference is therefore **associated with a runtime change**, not
+causally attributed to Colima or Docker Desktop alone. The demo records the
+Docker context, engine information, resolved Compose configuration, image
+identities, container-visible CPU/RAM, PostgreSQL version, and Fuseki health
+with every rerun so the difference remains auditable.
 
-What to point at on screen:
+There is also an intentional client-placement difference: the accepted runner
+executed on macOS and reached published host ports, whereas the containerized
+demo runner reaches both services on the private Compose network. This removes
+host-language setup from the demo but means a live timing is a replication,
+not a byte-for-byte recreation of the accepted timing path.
 
-- the `first` rows: the correctness gate — both backends return **3,960 rows**
-  with the **same SHA-256 result hash**; a mismatch would abort the campaign;
-- every subsequent run repeats the same row count and hash;
-- the timings exist *only after* equality has been established.
+## Commands
 
-Say: "This is the exact protocol of the accepted campaign, on one instance.
-Before any timing is recorded, both backends must return semantically equal
-results — same row count, same normalized hash. Only then do warm-ups and
-measured repetitions run."
-
-**Important — live timings will not match the campaign.** See "Live timings
-on this hardware" below before rehearsing this beat.
-
-### Beat 2 — the advisor explains and admits (~0 s)
-
-`dm-advisor Q5 --instance q5_ai_min2` reads only committed evidence
-(`results/final/summary.csv`); services are not needed.
-
-What to point at in the JSON:
-
-- `recommendation: fuseki` with a human-readable structural `reason`;
-- `evidence.measured_winner: postgresql` — the measurement disagrees;
-- `latency_regret_ms: 535.07` — the quantified cost of following the rule.
-
-Say: "The advisor recommends Fuseki because the query follows a declared
-hierarchy — a transparent, frozen rule. Then it attaches the correctness-gated
-evidence: the measured winner was PostgreSQL, and following the recommendation
-would have cost 535 milliseconds. Recommendation and measurement are kept
-separate on purpose."
-
-### Beat 3 — the same policy, the disastrous case (~0 s)
-
-`dm-advisor Q3 --instance q3_pvldb_distance3_depth4`, again evidence replay
-only — no waiting for the ~110 s Fuseki execution.
-
-What to point at:
-
-- same structure as beat 2, same frozen policy;
-- `latency_regret_ms: 101728` — the regret is now **101.7 seconds**.
-
-Say: "Same policy, different instance: for deep bounded traversal the
-structural rule recommends Fuseki again, but here following it would cost a
-hundred seconds. This is why our conclusion is that query shape alone is not
-enough to route queries — which is exactly the negative result on the next
-slide." (Hand back to the slides.)
-
-## Re-executing the benchmark live
-
-`demo.sh run` re-executes the real benchmark (same protocol, same correctness
-gate) on a chosen subset and then compares the live medians against the
-accepted campaign, flagging every instance whose winner flips:
+Run from the repository root:
 
 ```bash
-live-demo/demo.sh run --all              # every instance  (~40 min, CPU at 100%)
-live-demo/demo.sh run Q1                 # one family      (~10 s)
-live-demo/demo.sh run Q1 Q5              # several families
-live-demo/demo.sh run q3_direct_depth2   # a single instance
-live-demo/demo.sh run Q5 q1_db_yearly    # families and instances mix freely
+live-demo/demo.sh prepare              # fresh services + full data load
+live-demo/demo.sh ui                   # dashboard at http://localhost:8000
+live-demo/demo.sh run --all            # all 13 accepted instances
+live-demo/demo.sh run Q1               # one family
+live-demo/demo.sh run Q1 Q5            # several families
+live-demo/demo.sh run q3_direct_depth2 # one frozen instance
+
+live-demo/demo.sh 1                    # presentation beat 1: live Q5 rerun
+live-demo/demo.sh 2                    # presentation beat 2: Q5 advisor replay
+live-demo/demo.sh 3                    # presentation beat 3: deep-Q3 advisor replay
+live-demo/demo.sh all                  # all presentation beats
+live-demo/demo.sh down                 # stop the stack
 ```
 
-Family and instance names are validated against `config/instances.full.json`;
-an unknown token aborts before anything runs. When the run completes, the
-comparison (`live-demo/compare.py`) prints per-instance medians for both
-environments plus a `WINNER FLIP` marker; the raw CSV lives in the temporary
-directory and disappears with it.
+`run` always recreates both backend containers and reloads both stores before
+timing. Families and instances may be mixed; duplicates are removed while the
+accepted instance order is preserved. Unknown names fail before the benchmark.
+The script also refuses to start timing if any container outside the two fresh
+backend services is running.
 
-**Measured durations** (M2 Pro, Docker Desktop, full scale, 2026-07-21 —
-the script prints an estimate before starting):
+For the presentation, execute `prepare` before entering the room. Beats `1`
+and `all` then reuse those healthy containers, reload both stores to eliminate
+unknown rehearsal state, and run only `q5_ai_min2`. They do not rebuild images
+or recreate the VM on stage.
 
-| Selection | Wall clock |
-|---|---|
-| `--all` (13 instances) | **~40 min** |
-| `Q1` (3 instances) | ~10 s |
-| `Q2` (2 instances) | ~15 min |
-| `Q3` (4 instances) | ~22 min |
-| `Q4` (2 instances) | ~3 min |
-| `Q5` (2 instances) | ~20 s |
-
-The expensive individual instances are `q2_db_min3` (~10 min),
-`q3_pvldb_distance3_depth4` and `q3_pvldb_out_of_reach` (~9.5 min each),
-`q2_db_min5` (~5 min) and `q3_direct_depth2` (~3 min); everything else runs in
-seconds. During a run the machine sits near 100% CPU: close other work, keep
-AC power attached, and do not run it *during* the presentation — the guide's
-rule stands ("do not rerun the benchmark during the presentation").
-
-## Live timings on this hardware (2026-07-21 full re-execution)
-
-We re-ran all 13 instances on the demo laptop (`demo.sh run --all`) and
-compared against the accepted campaign:
-
-```
-instance                        live PG    live FU   live win    camp PG    camp FU   camp win
-q1_ai_yearly                      107.3       55.4     fuseki      115.8      141.9 postgresql  <-- FLIP
-q1_all_decades                    179.5      104.7     fuseki      209.6      204.1     fuseki
-q1_db_yearly                       45.4       31.0     fuseki       49.5      100.7 postgresql  <-- FLIP
-q2_db_min3                        456.0    74961.0 postgresql      508.7   138693.9 postgresql
-q2_db_min5                       1297.2    37610.9 postgresql     1429.1    79677.2 postgresql
-q3_direct_depth2                13659.7     9050.0     fuseki    14771.4    21725.4 postgresql  <-- FLIP
-q3_pvldb_distance3_depth2         200.5       70.5     fuseki      215.1      122.1     fuseki
-q3_pvldb_distance3_depth4        7484.2    62815.9 postgresql     8369.0   110097.2 postgresql
-q3_pvldb_out_of_reach            7441.6    62406.3 postgresql     7893.6   101906.5 postgresql
-q4_moderate_min1                 2752.9     8150.9 postgresql     1490.1    19097.8 postgresql
-q4_moderate_min2                 1838.0     8107.4 postgresql     3289.9    35070.1 postgresql
-q5_ai_min2                        675.5      377.9     fuseki      902.0     1437.1 postgresql  <-- FLIP
-q5_dm_min1                        334.8      551.6 postgresql      406.1     1488.4 postgresql
-```
-
-- **Correctness: 208/208 executions succeeded and every instance passed the
-  gate** — identical row counts and SHA-256 hashes on both backends. Parity
-  is environment-independent.
-- **Timings are not**: PostgreSQL ran ~10-15% faster than the campaign,
-  Fuseki **2-4× faster** (e.g. `q2_db_min3` 138.7 s → 75.0 s;
-  `q3_pvldb_distance3_depth4` 110.1 s → 62.8 s; `q5_ai_min2` 1,437 ms → 378 ms).
-- **4 winner flips, all PostgreSQL → Fuseki, all in already-close races**:
-  `q1_ai_yearly`, `q1_db_yearly`, `q3_direct_depth2`, `q5_ai_min2`.
-- **The structural asymmetries survive**: Q2 remains catastrophic for Fuseki
-  (58-164× slower), deep Q3 remains ~8× in favour of PostgreSQL, and the Q3
-  winner still depends on the depth parameter.
-
-Why the difference: same hardware (MacBook Pro M2 Pro, 16 GB), different
-environment. The campaign ran in a provisioned Colima VM (vz, Docker 27.4,
-exactly 10 vCPU / 8 GiB, fresh dedicated containers — see
-`results/final/environment.md`); the demo machine runs Docker Desktop
-(Docker 29.2, different VM networking). Fuseki timings include full HTTP
-result retrieval, so the VM network path affects them far more than the
-PostgreSQL binary protocol.
-
-How to use this on stage: the live winner of a close race (including
-`q5_ai_min2` in beat 1) may contradict the campaign — say so *before* it
-happens: "live timings on an uncontrolled laptop are illustrative; close-race
-winners are a property of the environment, the large asymmetries are a
-property of the workload. The authoritative evidence is `results/final/`,
-whose environment is recorded line by line." This is slide 11 demonstrating
-itself.
-
-## What the demo needs running
-
-- **Beat 1 and `run` are the only parts that touch the services**: they need
-  the two Docker containers up *and the data loaded*. Everything is local —
-  no network access is involved.
-- **Beats 2 and 3 need nothing running**: the advisor only reads the committed
-  `results/final/summary.csv` and `config/` files.
-
-## Reproducing from a fresh clone
-
-Anyone can reproduce the demo by following the repository quickstart
-(`README.md`, "Environment" and "Build the equivalent datasets"):
+The expected VM allocation defaults to 10 CPUs and 8 GiB. Override only when
+deliberately testing another environment:
 
 ```bash
-docker compose up -d --build            # PostgreSQL + in-memory Fuseki
-dm-extract /path/to/dblp-2026-06-01.nt.gz   # pinned snapshot, kept outside Git
-dm-emit-rdf
-dm-load-postgres --canonical data/canonical-full
-dm-load-fuseki data/rdf/dataset-full.nt
+EXPECTED_CPUS=8 EXPECTED_MEMORY_GIB=12 live-demo/demo.sh run Q1
+```
+
+That override makes the run executable; it does not make its timings directly
+equivalent to the accepted campaign.
+
+## What Compose owns
+
+`compose.yaml` defines three services:
+
+- `postgres`: PostgreSQL 17.10 with a readiness healthcheck;
+- `fuseki`: Fuseki 6.1.0 in memory with a readiness healthcheck;
+- `app`: the project CLI in a Python 3.12 image built from `Dockerfile.app`.
+
+`live-demo/compose.yaml` removes the two host port publications for demo runs.
+The app reaches both databases by service name on the private Compose network,
+so an unrelated local PostgreSQL or Fuseki process cannot cause a port clash.
+
+The app container receives the repository's `data/` directory read-only and
+may write only to `live-demo/runs/`. Extraction is intentionally not part of a
+presentation run: the pinned multi-gigabyte DBLP source takes hours to process,
+whereas the already verified canonical full extract is the accepted data
+boundary. The loaders, benchmark, advisor, selection, preflight, and comparison
+all run inside the app image.
+
+## Comparison safety gate
+
+`dm-demo compare` refuses to compare live timings unless all of the following
+match the accepted campaign:
+
+- successful campaign status;
+- scale and dataset SHA-256;
+- timeout, warm-up count, measured repetition count, and execution order;
+- exact instance objects for every selected id;
+- one first run, two warm-ups, and five measured runs per backend;
+- successful execution of every row;
+- one stable row-count/result-hash signature per instance;
+- accepted summary rows from the same dataset with five measured runs.
+
+Only after those checks does it write median ratios and winner flips. The
+result is explicitly labeled `comparable_runtime_replication`, with
+`authoritative_campaign_replaced: false`.
+
+## Evidence bundle
+
+Each run creates a timestamped directory containing:
+
+```text
+benchmark.csv              raw live executions
+summary.csv                live medians/min/max from dm-benchmark
+campaign.json              live protocol and configuration fingerprints
+instances.json             exact selected accepted instances
+progress.jsonl             untimed UTC progress events
+comparison.csv             live versus accepted medians and ratios
+comparison.json            comparison acceptance and flip count
+container-environment.json container-visible resources and service versions
+docker-context.txt         selected Docker context
+docker-version.txt         client/server versions
+docker-info.txt            runtime and VM-facing engine information
+compose-version.txt        Compose version
+compose-resolved.yaml      fully resolved orchestration configuration
+compose-images.txt         service image identities
+```
+
+These artifacts are local by default and should not be mixed into
+`results/final/`.
+
+## Presentation plan
+
+The safe sequence is:
+
+```bash
+# Before the presentation
+live-demo/demo.sh prepare
+live-demo/demo.sh ui
+
+# On stage
 live-demo/demo.sh all
 ```
 
-With the canonical data already extracted, tearing down and rebuilding the
-whole stack takes about 20 seconds (measured: compose down 1 s, up 3 s,
-PostgreSQL load 5 s, Fuseki load 2 s).
+Keep the dashboard open at `http://localhost:8000`. It visualizes the accepted
+campaign and polls `live-demo/runs/latest-comparison.csv` when you press
+**Refresh live result**. The dashboard is intentionally read-only: benchmark
+execution remains in the auditable CLI, so an accidental browser click cannot
+start a long campaign or alter accepted evidence.
 
-Mind one detail: **the Fuseki dataset lives in memory**. If the Fuseki
-container is recreated or restarted, rerun `dm-load-fuseki` before beat 1
-(and rerun `dm-load-postgres` if the PostgreSQL container was recreated, since
-the Compose file declares no named volume). The script resolves the mapped
-Postgres port automatically (override with `PG_PORT` or `DSN` env vars).
+The isolation guard permits the project dashboard during the presentation
+replication but still rejects every unrelated container. The accepted campaign,
+not this staged replication, remains the authoritative isolated measurement.
 
-## Preflight checklist
+The staged sequence normally finishes well within ten minutes. If `prepare`
+has not succeeded, do not improvise a build on stage: use beats `2` and `3`,
+which replay committed accepted evidence and require no running services.
 
-1. `docker compose ps` — both services `Up`.
-2. Both stores loaded (see above) — rerun the loaders if a container was
-   recreated.
-3. Terminal at repository root, project environment active, font large enough.
-4. One rehearsal run of `live-demo/demo.sh all` the same morning.
-5. `results/final/summary.csv` committed and present (beats 2-3 depend only on
-   this).
+Beat 1 reruns `q5_ai_min2` with the accepted 1 + 2 + 5 protocol, validates the
+result signatures, and compares live medians with the accepted CSV. Say before
+running it:
+
+> This is a controlled runtime replication, not a replacement campaign. The
+> answers must remain identical; absolute timings and close-race winners may
+> change with the container runtime.
+
+Beat 2 replays the accepted Q5 evidence through the advisor. Point out that the
+structural rule recommends Fuseki, while the accepted measured winner is
+PostgreSQL with 535.070 ms regret.
+
+Beat 3 replays the deep-Q3 case without executing its roughly two-minute
+accepted Fuseki query. It shows 101,728.196 ms regret and returns to the main
+finding: query shape alone was not a reliable latency router.
+
+Do not run all 13 instances during the presentation. A full runtime replication
+is a rehearsal or pre-presentation validation task.
+
+## Current known replication result
+
+Luca's 2026-07-21 Docker Desktop run completed all 208 executions with matching
+results and reported four winner flips relative to the accepted Colima
+campaign: `q1_ai_yearly`, `q1_db_yearly`, `q3_direct_depth2`, and
+`q5_ai_min2`. PostgreSQL remained faster on both Q2 instances, both deep-Q3
+instances, both Q4 instances, and `q5_dm_min1`.
+
+This supports two distinct conclusions:
+
+1. semantic parity survived the environment change;
+2. timing parity did not, especially for close comparisons.
+
+It does not isolate Docker Desktop or Colima as the sole causal factor.
+
+### Containerized Colima validation (2026-07-21)
+
+The completed Compose workflow then reran all 13 instances under Colima with
+the accepted 10-vCPU/8-GiB VM allocation, but with the benchmark client inside
+the app container:
+
+- 208/208 executions succeeded;
+- every instance retained one stable, cross-backend result signature;
+- campaign wall time was 58 minutes 51 seconds;
+- PostgreSQL live/accepted median ratios ranged from 0.626× to 1.191×;
+- Fuseki live/accepted median ratios ranged from 0.313× to 2.485×;
+- three mechanical median winners changed: `q1_db_yearly` and
+  `q1_ai_yearly` changed from PostgreSQL to Fuseki, while
+  `q3_pvldb_distance3_depth2` changed from Fuseki to PostgreSQL.
+
+The large workload asymmetries remained: PostgreSQL still won both Q2
+instances, the dense/direct and deep Q3 instances, both Q4 instances, and both
+Q5 instances. The complete local bundle is
+`live-demo/runs/20260721T190238Z-colima/`.
+
+This second replication is the decisive diagnostic point: a timing shift also
+appears within the Colima runtime family when client placement and session
+state change. The evidence therefore rejects a simple causal claim that
+Docker Desktop alone produced the earlier differences.
