@@ -1,0 +1,15 @@
+{
+  "instances": [
+    {
+      "id": "q5_ai_min2",
+      "profile": "Q5",
+      "enabled": true,
+      "parameters": {
+        "year_from": 2005,
+        "year_to": 2024,
+        "ancestor_area": "artificial-intelligence",
+        "min_distinct_areas": 2
+      }
+    }
+  ]
+}
