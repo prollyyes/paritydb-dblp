@@ -1,0 +1,200 @@
+<mxfile host="Electron">
+  <diagram id="5BApHfq9NE6l-U1WDMVQ" name="Pagina-1">
+    <mxGraphModel dx="1105" dy="626" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tPerson" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fillColor=#822433;fontColor=#FFFFFF;strokeColor=#611B26;fontStyle=1;fontSize=13;html=1;" value="person" vertex="1">
+          <mxGeometry height="110" width="300" x="80" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tPersonH" parent="tPerson" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="26" width="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tPersonH1" parent="tPersonH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="person_id (PK)" vertex="1">
+          <mxGeometry height="26" width="150" as="geometry">
+            <mxRectangle height="26" width="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPersonH2" parent="tPersonH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="name" vertex="1">
+          <mxGeometry height="26" width="150" x="150" as="geometry">
+            <mxRectangle height="26" width="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPersonR1" parent="tPerson" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="26" width="300" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="tPersonR1C1" parent="tPersonR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="pid/116/5265" vertex="1">
+          <mxGeometry height="26" width="150" as="geometry">
+            <mxRectangle height="26" width="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPersonR1C2" parent="tPersonR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="Sabbas Burdakis" vertex="1">
+          <mxGeometry height="26" width="150" x="150" as="geometry">
+            <mxRectangle height="26" width="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPersonR2" parent="tPerson" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="28" width="300" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="tPersonR2C1" parent="tPersonR2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="pid/d/ADeligiannakis" vertex="1">
+          <mxGeometry height="28" width="150" as="geometry">
+            <mxRectangle height="28" width="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPersonR2C2" parent="tPersonR2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="Antonios Deligiannakis" vertex="1">
+          <mxGeometry height="28" width="150" x="150" as="geometry">
+            <mxRectangle height="28" width="150" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVenue" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fillColor=#822433;fontColor=#FFFFFF;strokeColor=#611B26;fontStyle=1;fontSize=13;html=1;" value="venue" vertex="1">
+          <mxGeometry height="82" width="320" x="520" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="tVenueH" parent="tVenue" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="26" width="320" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tVenueH1" parent="tVenueH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="venue_id (PK)" vertex="1">
+          <mxGeometry height="26" width="140" as="geometry">
+            <mxRectangle height="26" width="140" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVenueH2" parent="tVenueH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="label" vertex="1">
+          <mxGeometry height="26" width="70" x="140" as="geometry">
+            <mxRectangle height="26" width="70" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVenueH3" parent="tVenueH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="venue_kind" vertex="1">
+          <mxGeometry height="26" width="110" x="210" as="geometry">
+            <mxRectangle height="26" width="110" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVenueR1" parent="tVenue" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="26" width="320" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="tVenueR1C1" parent="tVenueR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="streams/conf/icde" vertex="1">
+          <mxGeometry height="26" width="140" as="geometry">
+            <mxRectangle height="26" width="140" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVenueR1C2" parent="tVenueR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="ICDE" vertex="1">
+          <mxGeometry height="26" width="70" x="140" as="geometry">
+            <mxRectangle height="26" width="70" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tVenueR1C3" parent="tVenueR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="conference" vertex="1">
+          <mxGeometry height="26" width="110" x="210" as="geometry">
+            <mxRectangle height="26" width="110" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tAuth" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fillColor=#822433;fontColor=#FFFFFF;strokeColor=#611B26;fontStyle=1;fontSize=13;html=1;" value="authorship" vertex="1">
+          <mxGeometry height="110" width="300" x="80" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="tAuthH" parent="tAuth" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="26" width="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tAuthH1" parent="tAuthH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="publication_id (PK, FK)" vertex="1">
+          <mxGeometry height="26" width="170" as="geometry">
+            <mxRectangle height="26" width="170" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tAuthH2" parent="tAuthH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="person_id (PK, FK)" vertex="1">
+          <mxGeometry height="26" width="130" x="170" as="geometry">
+            <mxRectangle height="26" width="130" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tAuthR1" parent="tAuth" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="26" width="300" y="56" as="geometry" />
+        </mxCell>
+        <mxCell id="tAuthR1C1" parent="tAuthR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="rec/conf/icde/BurdakisD12" vertex="1">
+          <mxGeometry height="26" width="170" as="geometry">
+            <mxRectangle height="26" width="170" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tAuthR1C2" parent="tAuthR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="pid/116/5265" vertex="1">
+          <mxGeometry height="26" width="130" x="170" as="geometry">
+            <mxRectangle height="26" width="130" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tAuthR2" parent="tAuth" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="28" width="300" y="82" as="geometry" />
+        </mxCell>
+        <mxCell id="tAuthR2C1" parent="tAuthR2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="rec/conf/icde/BurdakisD12" vertex="1">
+          <mxGeometry height="28" width="170" as="geometry">
+            <mxRectangle height="28" width="170" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tAuthR2C2" parent="tAuthR2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="pid/d/ADeligiannakis" vertex="1">
+          <mxGeometry height="28" width="130" x="170" as="geometry">
+            <mxRectangle height="28" width="130" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPub" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fillColor=#822433;fontColor=#FFFFFF;strokeColor=#611B26;fontStyle=1;fontSize=13;html=1;" value="publication" vertex="1">
+          <mxGeometry height="110" width="390" x="520" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="tPubH" parent="tPub" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="41" width="390" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tPubH1" parent="tPubH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="publication_id (PK)" vertex="1">
+          <mxGeometry height="41" width="140" as="geometry">
+            <mxRectangle height="41" width="140" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubH2" parent="tPubH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="title" vertex="1">
+          <mxGeometry height="41" width="108" x="140" as="geometry">
+            <mxRectangle height="41" width="108" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubH3" parent="tPubH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="year" vertex="1">
+          <mxGeometry height="41" width="42" x="248" as="geometry">
+            <mxRectangle height="41" width="42" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubH4" parent="tPubH" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#F2F2F2;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;fontStyle=1;align=left;spacingLeft=6;" value="venue_id (FK)" vertex="1">
+          <mxGeometry height="41" width="100" x="290" as="geometry">
+            <mxRectangle height="41" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubR1" parent="tPub" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1">
+          <mxGeometry height="39" width="390" y="71" as="geometry" />
+        </mxCell>
+        <mxCell id="tPubR1C1" parent="tPubR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="rec/conf/icde/BurdakisD12" vertex="1">
+          <mxGeometry height="39" width="140" as="geometry">
+            <mxRectangle height="39" width="140" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubR1C2" parent="tPubR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="Detecting Outliers in…" vertex="1">
+          <mxGeometry height="39" width="108" x="140" as="geometry">
+            <mxRectangle height="39" width="108" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubR1C3" parent="tPubR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="2012" vertex="1">
+          <mxGeometry height="39" width="42" x="248" as="geometry">
+            <mxRectangle height="39" width="42" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tPubR1C4" parent="tPubR1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#FFFFFF;fontColor=#1F2430;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=11;align=left;spacingLeft=6;" value="streams/conf/icde" vertex="1">
+          <mxGeometry height="39" width="100" x="290" as="geometry">
+            <mxRectangle height="39" width="100" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAuthPerson" edge="1" parent="1" source="tAuth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=10;strokeColor=#536274;fontColor=#374151;labelBackgroundColor=#FFFFFF;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="tPerson" value="FK person_id">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="239.3" y="329.45" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eAuthPub" edge="1" parent="1" source="tAuth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=10;strokeColor=#536274;fontColor=#374151;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="tPub" value="FK publication_id">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ePubVenue" edge="1" parent="1" source="tPub" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;fontSize=10;strokeColor=#536274;fontColor=#374151;labelBackgroundColor=#FFFFFF;exitX=0.412;exitY=-0.001;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" target="tVenue" value="FK venue_id">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="329.91" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
