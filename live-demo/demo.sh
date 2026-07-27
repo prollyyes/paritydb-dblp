@@ -125,6 +125,10 @@ record_runtime() {
 
 check_competing_containers() {
   local allowed running container_id
+  if [ "${DEMO_ALLOW_COMPETING:-0}" = "1" ]; then
+    echo "WARNING: DEMO_ALLOW_COMPETING=1 — running despite unrelated containers; timings may be affected." >&2
+    return 0
+  fi
   # The idle, read-only dashboard is part of the presentation stack. Any
   # container outside these three known services still invalidates the run.
   allowed="$("${COMPOSE_BASE[@]}" ps -q postgres fuseki ui)"
