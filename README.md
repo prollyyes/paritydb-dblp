@@ -59,6 +59,17 @@ The exact inclusion, exclusion, collaboration, and result-equivalence rules are 
 
 Each family has paired SQL and SPARQL implementations under [`queries/`](queries/). Result identifiers and typed values are normalized before comparison.
 
+## Documentation
+
+The `docs/` directory contains both the frozen contracts and a detailed narrative of the design:
+
+- [`docs/01-data-pipeline.md`](docs/01-data-pipeline.md) — how the pinned snapshot becomes two equivalent stores: extraction passes, exclusion policies, deterministic sampling, and both loaders.
+- [`docs/02-query-design.md`](docs/02-query-design.md) — every SQL and SPARQL query explained line by line, with the equivalence pitfalls we hit and how parameters and result normalization work.
+- [`docs/03-benchmark-and-results.md`](docs/03-benchmark-and-results.md) — the benchmark protocol, the 13-instance workload, Edoardo's independent PostgreSQL validation, the accepted controlled campaign, and the advisor evaluation.
+- [`docs/04-routing-advisor.md`](docs/04-routing-advisor.md) — the explainable routing advisor: structural profiles, rule ordering, the evidence gate, and how the frozen policy scored against the campaign.
+- [`docs/query_contracts.md`](docs/query_contracts.md) — the frozen data and query semantics both backends must satisfy.
+- [`docs/decision_matrix.md`](docs/decision_matrix.md) — the frozen structural routing policy behind the advisor.
+
 ## Reproducibility safeguards
 
 - The source snapshot is pinned by DOI, download URL, and official MD5.
@@ -158,7 +169,7 @@ The test suite covers deterministic extraction, source verification, exclusion p
 - `src/dm_project/` - extractor, emitters, loaders, benchmark, and advisor.
 - `sql/schema.sql` - normalized relational schema and workload indexes.
 - `queries/sql/` and `queries/sparql/` - paired query implementations.
-- `docs/` - frozen query contracts and routing decision matrix.
+- `docs/` - detailed design documentation, frozen query contracts, and the routing decision matrix.
 - `tests/fixtures/` - adversarial DBLP-style test graph.
 - `results/` - benchmark output location.
 
