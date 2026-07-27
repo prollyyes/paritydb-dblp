@@ -93,6 +93,25 @@ docker compose up -d --build
 
 The local Compose stack exposes PostgreSQL at `localhost:5432` and an update-enabled, in-memory Fuseki dataset at `localhost:3030/dblp`.
 
+## Containerized live demo
+
+The presentation workflow also containerizes the project CLI and uses Docker
+Compose to recreate both services, reload the verified full-scale data, rerun
+frozen benchmark instances, and compare live medians with the accepted CSV:
+
+```bash
+live-demo/demo.sh prepare      # build, verify, and load before presenting
+live-demo/demo.sh ui           # presentation dashboard at localhost:8000
+live-demo/demo.sh all          # short CLI presentation sequence
+live-demo/demo.sh run --all    # full 13-instance replication; not for the stage
+```
+
+Each rerun writes an ignored evidence bundle under `live-demo/runs/` with raw
+executions, protocol metadata, runtime provenance, and a guarded comparison.
+It never modifies `results/final/`. See
+[`live-demo/README.md`](live-demo/README.md) for the Docker Desktop/Colima
+comparability limits and demo procedure.
+
 ## Build the equivalent datasets
 
 Download the pinned snapshot from the DOI landing page and keep the compressed data outside Git. Then run:
@@ -164,4 +183,3 @@ Developed for the Data Management course, academic year 2025/2026.
 ## License
 
 The software is released under the MIT License. DBLP data is distributed separately under CC0 1.0.
-
